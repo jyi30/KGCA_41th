@@ -11,12 +11,18 @@ int main(void)
 	char source[40] = { 0 }, target[40] = { 0 };
 	char* ch;
 
-	printf("%d", _msize(source));
+	//printf("%d", _msize(source));
 
 	printf("복사할 파일명 입력 : ");
-	gets(source);
+	fgets(source, sizeof(source), stdin);
+	source[strlen(source) - 1] = '\0';
+
 	printf("어느 파일에 복사? : ");
-	gets(target);
+	fgets(target, sizeof(source), stdin);
+	target[strlen(target) - 1] = '\0';
+
+
+	
 
 	if (source[39] != '\0' || target[39] != '\0')
 	{
