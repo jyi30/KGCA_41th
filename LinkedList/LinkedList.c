@@ -20,10 +20,11 @@ StdNode* g_pTail = NULL;
 StdNode* g_pCurrent = NULL;
 
 void create(int count);
-void insert(StdNode* newNode);
 void allPrint();
 StdNode* search(char name[]);
 void delete(char name[]);
+void frontInsert(StdNode* student);
+void backInsert(StdNode* student);
 
 void init()
 {
@@ -47,26 +48,10 @@ void create(int count)
 		newNode->score3 = rand() % 101;
 		newNode->total = (newNode->score1) + (newNode->score2) + (newNode->score3);
 
-		insert(newNode);
+		backInsert(newNode);
 	}
 
 	allPrint();
-}
-
-void insert(StdNode* newNode)
-{
-	if (g_pHead->m_pNext == NULL)
-	{
-		g_pHead->m_pNext = newNode;
-		newNode->m_pNext = g_pTail;
-		g_pCurrent = newNode;
-	}
-	else
-	{
-		g_pCurrent->m_pNext = newNode;
-		newNode->m_pNext = g_pTail;
-		g_pCurrent = newNode;
-	}
 }
 
 void allPrint()
@@ -120,6 +105,27 @@ void delete(char name[])
 	}
 }
 
+void frontInsert(StdNode* student)
+{
+	
+}
+
+void backInsert(StdNode* newNode)
+{
+	if (g_pHead->m_pNext == NULL)
+	{
+		g_pHead->m_pNext = newNode;
+		newNode->m_pNext = g_pTail;
+		g_pCurrent = newNode;
+	}
+	else
+	{
+		g_pCurrent->m_pNext = newNode;
+		newNode->m_pNext = g_pTail;
+		g_pCurrent = newNode;
+	}
+}
+
 int main(void){
 	init();
 
@@ -130,7 +136,7 @@ int main(void){
 		printf("======================================\n");
 		printf("            학생 관리 기록부           \n");
 		printf("======================================\n");
-		printf("1. 생성  2. 출력  3. 탐색  4. 삭제  5. 종료\n\n");
+		printf("1. 생성  2. 출력  3. 탐색  4. 삽입  5. 삭제  6. 종료\n\n");
 		printf("입력 : ");
 		scanf_s("%d", &select);
 
@@ -141,55 +147,105 @@ int main(void){
 			int count = 0;
 			printf("생성 횟수 입력 : ");
 			scanf_s("%d", &count);
+			system("cls");
 			create(count);
 
-			break;
+			continue;
 		}
 		case 2:
 		{
+			system("cls");
 			allPrint();
-			break;
+
+			continue;
 		}
 		case 3:
 		{
 			if (g_pHead->m_pNext == NULL)
 			{
+				system("cls");
 				printf("데이터가 비었습니다!!\n\n");
-				break;
+
+				continue;
 			}
 
 			char name[30];
 			printf("이름을 입력해주세요 : ");
 			scanf_s("%s", name, sizeof(name));
+			system("cls");
 			print(search(name));
-			break;
+
+			continue;
 		}
 		case 4:
 		{
+			int select = 0;
+
+			printf("1. 제일 앞에 삽입\n2. 제일 뒤에 삽입\n\n");
+			printf("선택 : ");
+			scanf_s("%d", &select);
+
+			StdNode* student = (StdNode*)calloc(1, sizeof(StdNode));
+
+			printf("이름 : ");
+			scanf_s("%s", student->name, sizeof(student->name));
+			printf("나이 : ");
+			scanf_s("%d", &(student->age));
+			printf("점수1 :  ");
+			scanf_s("%d", &(student->score1));
+			printf("점수2 :  ");
+			scanf_s("%d", &(student->score2));
+			printf("점수3 :  ");
+			scanf_s("%d", &(student->score3));
+			student->total = (student->score1) + (student->score2) + (student->score3);
+
+			if (select == 1)
+			{
+				frontInsert(student);
+			}
+			else
+			{
+				backInsert(student);
+			}
+
+			continue;
+		}
+		case 5:
+		{
 			if (g_pHead->m_pNext == NULL)
 			{
+				system("cls");
 				printf("데이터가 비었습니다!!\n\n");
-				break;
+
+				continue;
 			}
 			
 			char name[30];
 			printf("이름을 입력해주세요 : ");
 			scanf_s("%s", name, sizeof(name));
 			delete(name);
-			break;
+
+			continue;
 		}
-		case 5:
+		case 6:
 		{
-			printf("프로그램을 종료합니다.\n\n");
+			printf("\n프로그램을 종료합니다.\n\n");
+
 			break;
 		}
 		default:
 		{
-			printf("잘못된 입력입니다.\n\n");
+			system("cls");
+			printf("\n잘못된 입력입니다.\n\n");
+
 			continue;
 		}
 		}
-		
+		break;
 	}
+
+	free(g_pCurrent);
+	free(g_pHead);
+	free(g_pTail);
 	return 0;
 }
