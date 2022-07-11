@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>D:\Project\Output\$(SolutionName)\$(ProjectName)\</OutDir>
-    <IntDir>D:\Project\$(ConfigurationName)\$(SolutionName)\$(ProjectName)\</IntDir>
+    <OutDir>../../output/debug/</OutDir>
+    <IntDir>../../output/debug/BlockFileIO</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
