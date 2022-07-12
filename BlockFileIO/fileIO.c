@@ -16,7 +16,7 @@ int main(void)
 		fgets(fName, sizeof(fName), stdin);
 		fName[strlen(fName) - 1] = '\0';
 
-		fopen_s(&fp, fName, "a+");
+		fopen_s(&fp, fName, "rb");
 
 		if (fp == 0)
 		{
