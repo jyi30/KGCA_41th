@@ -305,7 +305,7 @@ int main(void){
 				system("cls");
 				printf("데이터가 비었습니다!!\n\n");
 
-				continue;
+				continue; 
 			}
 			
 			char name[30];
