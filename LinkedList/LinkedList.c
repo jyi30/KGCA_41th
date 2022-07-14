@@ -484,6 +484,7 @@ int main(void){
 		break;
 	}
 
+	deleteAll();
 	free(g_pCurrent);
 	free(g_pHead);
 	free(g_pTail);
