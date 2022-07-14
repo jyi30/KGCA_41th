@@ -21,9 +21,11 @@ StdNode* g_pHead = NULL;
 StdNode* g_pTail = NULL;
 StdNode* g_pCurrent = NULL;
 
+void init();
 void create(int count);
 StdNode* newNode();
 void allPrint();
+void print(StdNode* node);
 StdNode* search(char name[]);
 void delete(StdNode* delNode);
 void deleteAll();
@@ -32,6 +34,8 @@ void frontInsert(StdNode* student);
 void backInsert(StdNode* student);
 void saveFile();
 void loadFile();
+void sort();
+int isFull();
 
 void init()
 {
@@ -222,6 +226,8 @@ void saveFile()
 	}
 
 	fclose(fp);
+
+	system("cls");
 	printf("\n파일 저장 완료!!\n\n");
 
 	return;
@@ -260,7 +266,72 @@ void loadFile()
 	}
 
 	fclose(fp);
-	
+}
+
+void sort()
+{
+	StdNode* cmpNode = g_pHead->m_pNext;
+	StdNode* nextNode;
+	StdNode* prevNode;
+	StdNode* cntNext;
+	g_pCurrent = g_pHead;
+	 
+	while (g_pCurrent != g_pTail->m_pPrev)
+	{
+		for (StdNode* node = cmpNode->m_pNext; node != g_pTail; node = node->m_pNext)
+		{
+			if (node->total < cmpNode->total)
+			{
+				cmpNode = node;
+			}
+		}
+
+		if (g_pCurrent->m_pNext == cmpNode)
+		{
+			g_pCurrent = g_pCurrent->m_pNext;
+			cmpNode = cmpNode->m_pNext;
+
+			continue;
+		}
+		prevNode = cmpNode->m_pPrev;
+		nextNode = cmpNode->m_pNext;
+		cntNext = g_pCurrent->m_pNext;
+
+		prevNode->m_pNext = nextNode;
+		nextNode->m_pPrev = prevNode;
+		g_pCurrent->m_pNext = cmpNode;
+		cmpNode->m_pPrev = g_pCurrent;
+		cmpNode->m_pNext = cntNext;
+		cntNext->m_pPrev = cmpNode;
+
+		g_pCurrent = g_pCurrent->m_pNext;
+		cmpNode = cmpNode->m_pNext;
+	}
+}
+
+int isFull()
+{
+	if (g_pHead->m_pNext != g_pTail)
+	{
+		char select;
+		system("cls");
+		allPrint();
+		printf("이미 리스트에 데이터가 존재합니다.\n기존 데이터를 삭제하고 진행할까요?\n");
+		printf("(Y/N) : ");
+
+		rewind(stdin);
+		scanf_s("%c", &select, sizeof(select));
+
+		if (select == 'y' || select == 'Y')
+		{
+			deleteAll();
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
 }
 
 int main(void){
@@ -269,8 +340,6 @@ int main(void){
 
 	while (1)
 	{
-		
-
 		printf("======================================\n");
 		printf("            학생 관리 기록부           \n");
 		printf("======================================\n");
@@ -283,6 +352,12 @@ int main(void){
 		{
 		case 1: //무작위 생성
 		{
+			if (!isFull())
+			{
+				printf("\n취소되었습니다.\n\n");
+				continue;
+			}
+
 			int count = 0;
 			printf("무작위 생성 횟수 입력 : ");
 			scanf_s("%d", &count);
@@ -326,7 +401,7 @@ int main(void){
 		{
 			int select = 0;
 
-			printf("1. 제일 앞에 삽입\n2. 제일 뒤에 삽입\n3. 특정 노드 전후에 삽입\n\n");
+			printf("\n1. 제일 앞에 삽입\n2. 제일 뒤에 삽입\n3. 특정 노드 전후에 삽입\n\n");
 			printf("선택 : ");
 			scanf_s("%d", &select);
 
@@ -385,6 +460,7 @@ int main(void){
 			}
 
 			system("cls");
+			allPrint();
 			printf("\n\n삽입 완료!\n\n");
 
 			continue;
@@ -439,32 +515,21 @@ int main(void){
 		}
 		case 8: //불러오기
 		{
-			if (g_pHead->m_pNext != g_pTail)
+			if (isFull())
 			{
-				char select;
-				printf("이미 리스트에 데이터가 존재합니다.\n기존 데이터를 삭제하고 불러오기를 진행할까요?\n");
-				printf("(Y/N) : ");
-				
-				rewind(stdin);
-				scanf_s("%c", &select, sizeof(select));
-
-				if (select == 'y' || select == 'Y')
-				{
-					deleteAll();
-				}
-				else
-				{
-					printf("\n취소되었습니다.\n\n");
-					continue;
-				}
+				loadFile();
+				allPrint();
+				continue;
 			}
-
-			loadFile();
-			allPrint();
-			continue;
+			else
+			{
+				printf("\n취소되었습니다.\n\n");
+				continue;
+			}
 		}
 		case 9: //정렬
 		{
+			sort();
 			continue;
 		}
 		case 0: //종료
