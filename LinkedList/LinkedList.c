@@ -45,6 +45,7 @@ void init()
 
 void create(int count) //입력 받은 수 만큼 무작위 데이터 생성
 {
+	srand(time(NULL));
 	for (int i = 0; i < count; i++)
 	{
 		StdNode* newNode = (StdNode*)calloc(1, sizeof(StdNode));
@@ -52,7 +53,7 @@ void create(int count) //입력 받은 수 만큼 무작위 데이터 생성
 		{
 			newNode->name[j] = 65 + rand() % 26;
 		}
-		newNode->age = count + rand() % 40;
+		newNode->age = rand() % 60;
 		newNode->score1 = rand() % 101;
 		newNode->score2 = rand() % 101;
 		newNode->score3 = rand() % 101;
@@ -241,9 +242,13 @@ void loadFile()
 
 	if (err != 0)
 	{
+		system("cls");
+
 		printf("\n파일 열기 실패!!\n\n");
 		return;
 	}
+
+	system("cls");
 
 	printf("\n파일 열기 성공!!\n\n");
 
@@ -293,7 +298,7 @@ int main(void){
 
 			continue;
 		}
-		case 3: //탐색 후 결과 출력(개선 여지 : 동명이인 대응할 것) -> 탐색 결과를 노드가 아닌 배열(포인터)로 반환하면 가능할 듯
+		case 3: //탐색 후 결과 출력(개선 여지 : 동명이인 대응) -> 탐색 결과를 노드가 아닌 노드 타입 배열(포인터)로 반환하면 가능할 듯
 		{
 			if (g_pHead->m_pNext == g_pTail)
 			{
@@ -455,6 +460,7 @@ int main(void){
 			}
 
 			loadFile();
+			allPrint();
 			continue;
 		}
 		case 9: //정렬
