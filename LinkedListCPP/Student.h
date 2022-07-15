@@ -4,9 +4,8 @@
 #include <time.h>
 #include <string.h> //memset
 
-class Student
+struct Student
 {
-private:
 	char name[20];
 	int age;
 	int score1;
@@ -15,8 +14,6 @@ private:
 	int total;
 	Student* m_pNext;
 	Student* m_pPrev;
-public:
 	Student();
 	~Student();
 };
-
