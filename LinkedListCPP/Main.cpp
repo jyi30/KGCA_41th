@@ -1,8 +1,12 @@
-#include "listHeader.h"
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include "StdManagement.h"
 
-int main(void){
-	
-	if (!init())
+int main(void) {
+
+	StdManagement manage;
+
+	if (!manage.init())
 	{
 		return 0;
 	}
@@ -23,7 +27,7 @@ int main(void){
 		{
 		case 1: //무작위 생성
 		{
-			if (!isFull())
+			if (!manage.isFull(&manage))
 			{
 				printf("\n취소되었습니다.\n\n");
 				continue;
@@ -33,20 +37,20 @@ int main(void){
 			printf("무작위 생성 횟수 입력 : ");
 			scanf_s("%d", &count);
 			system("cls");
-			create(count);
+			manage.create(count);
 
 			continue;
 		}
 		case 2: //전체 출력
 		{
 			system("cls");
-			allPrint();
+			manage.allPrint();
 
 			continue;
 		}
 		case 3: //탐색 후 결과 출력(개선 여지 : 동명이인 대응) -> 탐색 결과를 노드가 아닌 노드 타입 배열(포인터)로 반환하면 가능할 듯
 		{
-			if (g_pHead->m_pNext == g_pTail)
+			if (manage.getHead()->m_pNext == manage.getTail())
 			{
 				system("cls");
 				printf("데이터가 비었습니다!!\n\n");
@@ -58,12 +62,12 @@ int main(void){
 			printf("이름을 입력해주세요 : ");
 			scanf_s("%s", name, sizeof(name));
 			system("cls");
-			
-			StdNode* result = search(name);
+
+			Student* result = manage.search(name);
 
 			if (result != NULL)
 			{
-				print(result);
+				manage.print(result);
 			}
 
 			continue;
@@ -79,15 +83,15 @@ int main(void){
 
 			if (select == 1)
 			{
-				frontInsert(newNode());
+				manage.frontInsert(manage.newNode());
 			}
-			else if(select == 2)
+			else if (select == 2)
 			{
-				backInsert(newNode());
+				manage.backInsert(manage.newNode());
 			}
 			else
 			{
-				if (g_pHead->m_pNext == g_pTail)
+				if (manage.getHead()->m_pNext == manage.getTail())
 				{
 					system("cls");
 					printf("데이터가 비었습니다!!\n\n");
@@ -96,14 +100,14 @@ int main(void){
 				}
 
 				system("cls");
-				allPrint();
+				manage.allPrint();
 
 				char name[30];
 				int location = 0;
 				printf("삽입을 원하는 위치의 학생 이름을 입력해주세요 : ");
 				scanf_s("%s", name, sizeof(name));
 
-				StdNode* result = search(name);
+				Student* result = manage.search(name);
 
 				if (result == NULL)
 				{
@@ -127,29 +131,29 @@ int main(void){
 					break;
 				}
 
-				insert(newNode(), result, location);
+				manage.insert(manage.newNode(), result, location);
 			}
 
 			system("cls");
-			allPrint();
+			manage.allPrint();
 			printf("\n\n삽입 완료!\n\n");
 
 			continue;
 		}
 		case 5: //삭제
 		{
-			if (g_pHead->m_pNext == g_pTail)
+			if (manage.getHead()->m_pNext == manage.getTail())
 			{
 				system("cls");
 				printf("데이터가 비었습니다!!\n\n");
 
-				continue; 
+				continue;
 			}
-			
+
 			char name[30];
 			printf("이름을 입력해주세요 : ");
 			scanf_s("%s", name, sizeof(name));
-			delete(search(name));
+			delete(manage.search(name));
 
 			system("cls");
 			printf("\n\n삭제 완료!\n\n");
@@ -158,7 +162,7 @@ int main(void){
 		}
 		case 6: //전체 삭제
 		{
-			if (g_pHead->m_pNext == g_pTail)
+			if (manage.getHead()->m_pNext == manage.getTail())
 			{
 				system("cls");
 				printf("데이터가 비었습니다!!\n\n");
@@ -166,7 +170,7 @@ int main(void){
 				continue;
 			}
 
-			deleteAll();
+			manage.deleteAll();
 
 			system("cls");
 			printf("삭제 완료\n\n");
@@ -175,21 +179,21 @@ int main(void){
 		}
 		case 7: //저장
 		{
-			if (g_pHead->m_pNext == g_pTail)
+			if (manage.getHead()->m_pNext == manage.getTail())
 			{
 				printf("저장할 데이터가 없습니다!!\n\n");
 				continue;
 			}
 
-			saveFile();
+			manage.saveFile();
 			continue;
 		}
 		case 8: //불러오기
 		{
-			if (isFull())
+			if (manage.isFull(&manage))
 			{
-				loadFile();
-				allPrint();
+				manage.loadFile();
+				manage.allPrint();
 				continue;
 			}
 			else
@@ -200,7 +204,7 @@ int main(void){
 		}
 		case 9: //정렬
 		{
-			sort();
+			manage.sort();
 			continue;
 		}
 		case 0: //종료
@@ -220,9 +224,7 @@ int main(void){
 		break;
 	}
 
-	deleteAll();
-	free(g_pCurrent);
-	free(g_pHead);
-	free(g_pTail);
+	manage.deleteAll();
+	
 	return 0;
 }

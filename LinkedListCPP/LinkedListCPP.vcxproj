@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{88c69264-43c9-46f8-8202-6bbf6221ef1d}</ProjectGuid>
-    <RootNamespace>LinkedList</RootNamespace>
+    <ProjectGuid>{9ff62794-6712-4cf5-8b70-3943d3f60a7a}</ProjectGuid>
+    <RootNamespace>LinkedListCPP</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>../../output/debug/</OutDir>
-    <IntDir>../../output/debug/LinkedList</IntDir>
+    <IntDir>../../output/debug/LinkedListCPP</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,10 +141,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="LinkedList.c" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="StdManagement.h" />
+    <ClInclude Include="Student.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="listHeader.h" />
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="StdManagement.cpp" />
+    <ClCompile Include="Student.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
