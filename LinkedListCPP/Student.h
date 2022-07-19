@@ -1,8 +1,7 @@
 #pragma once
-#include <stdio.h>
-#include <stdlib.h> //calloc
-#include <time.h>
-#include <string.h> //memset
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
 struct Student
 {

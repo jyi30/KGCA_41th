@@ -13,18 +13,18 @@ StdManagement::~StdManagement()
 
 Student* StdManagement::newNode() //새로운 노드 선언 후 반환
 {
-	Student* student = (Student*)calloc(1, sizeof(Student));
+	Student* student = new Student();
 
-	printf("이름 : ");
-	scanf_s("%s", student->name, sizeof(student->name));
-	printf("나이 : ");
-	scanf_s("%d", &(student->age));
-	printf("점수1 :  ");
-	scanf_s("%d", &(student->score1));
-	printf("점수2 :  ");
-	scanf_s("%d", &(student->score2));
-	printf("점수3 :  ");
-	scanf_s("%d", &(student->score3));
+	cout << "이름 : ";
+	cin >> student->name;
+	cout << "나이 : ";
+	cin >> student->age;
+	cout << "점수1 :  ";
+	cin >> student->score1;
+	cout << "점수2 :  ";
+	cin >> student->score2;
+	cout << "점수3 :  ";
+	cin >> student->score3;
 	student->total = (student->score1) + (student->score2) + (student->score3);
 
 	return student;
@@ -32,13 +32,13 @@ Student* StdManagement::newNode() //새로운 노드 선언 후 반환
 
 int StdManagement::init()
 {
-	g_pHead = (Student*)calloc(1, sizeof(Student));
-	g_pTail = (Student*)calloc(1, sizeof(Student));
-	g_pCurrent = (Student*)calloc(1, sizeof(Student));
+	g_pHead = new Student();
+	g_pTail = new Student();
+	g_pCurrent = new Student();
 
 	if (g_pHead == NULL || g_pTail == NULL || g_pCurrent == NULL)
 	{
-		printf("메모리 할당에 실패했습니다. 다시 시작해주세요.\n\n");
+		cout << "메모리 할당에 실패했습니다. 다시 시작해주세요.\n\n";
 		return 0;
 	}
 
@@ -53,7 +53,7 @@ void StdManagement::create(int count) //입력 받은 수 만큼 무작위 데이터 생성
 	srand(time(NULL));
 	for (int i = 0; i < count; i++)
 	{
-		Student* newNode = (Student*)calloc(1, sizeof(Student));
+		Student* newNode = new Student();
 		for (int j = 0; j < 4; j++)
 		{
 			newNode->name[j] = 65 + rand() % 26;
@@ -74,25 +74,30 @@ void StdManagement::allPrint() //전체 연결 리스트 출력
 {
 	if (g_pHead->m_pNext == g_pTail)
 	{
-		printf("출력할 항목이 없습니다.\n\n");
+		cout << "출력할 항목이 없습니다.\n\n";
 		return;
 	}
 
-	printf("\n%-10s %-10s %-10s %-10s %-10s %-10s\n", "이름", "나이", "점수1", "점수2", "점수3", "총점");
-	printf("============================================================\n");
+	cout.setf(ios::left);
+	cout << setw(10) << "이름" << setw(10) <<  "나이" << setw(10) << "점수1" << setw(10) << "점수2" << setw(10) 
+		<< "점수3" << setw(10) << "총점" << endl;
+	cout << "============================================================\n";
 	for (Student* node = g_pHead->m_pNext; node != g_pTail; node = node->m_pNext)
 	{
-		printf("%-10s %-10d %-10d %-10d %-10d %-10d\n\n", node->name, node->age, node->score1, node->score2, node->score3, node->total);
+		cout << setw(10) << node->name << setw(10) << node->age << setw(10) << node->score1 << setw(10) 
+			<< node->score2 << setw(10) << node->score3 << setw(10) << node->total << "\n\n";
 	}
-	printf("끝.\n\n");
+	cout << "끝.\n\n";
 }
 
 void StdManagement::print(Student* node)
 {
-	printf("\n%-10s %-10s %-10s %-10s %-10s %-10s\n", "이름", "나이", "점수1", "점수2", "점수3", "총점");
-	printf("============================================================\n");
-	printf("%-10s %-10d %-10d %-10d %-10d %-10d\n\n", node->name, node->age, node->score1, node->score2, node->score3, node->total);
-	printf("끝.\n\n");
+	cout << "이름" << setw(10) << "나이" << setw(10) << "점수1" << setw(10) << "점수2" << setw(10) << "점수3" 
+		<< setw(10) << "총점";
+	cout << "============================================================\n";
+	cout << node->name << setw(10) << node->age << setw(10) << node->score1 << setw(10) << node->score2 << setw(10) 
+		<< node->score3 << setw(10) << node->total << "\n\n";
+	cout << "끝.\n\n";
 }
 
 void StdManagement::saveFile()
@@ -103,14 +108,14 @@ void StdManagement::saveFile()
 	char fName[10] = { 0, };
 
 	rewind(stdin);
-	printf("저장할 파일명 : ");
-	gets_s(fName, sizeof(fName));
+	cout << "저장할 파일명 : ";
+	cin >> fName;
 
 	err = fopen_s(&fp, fName, "w+t");
 
 	if (err != 0)
 	{
-		printf("파일 열기 실패!\n\n");
+		cout << "파일 열기 실패!\n\n";
 		return;
 	}
 
@@ -122,7 +127,7 @@ void StdManagement::saveFile()
 	fclose(fp);
 
 	system("cls");
-	printf("\n파일 저장 완료!!\n\n");
+	cout << "\n파일 저장 완료!!\n\n";
 
 	return;
 }
@@ -134,9 +139,9 @@ void StdManagement::loadFile()
 	errno_t err;
 	char fName[10] = { 0, };
 
-	printf("\n파일명을 입력해주세요 : ");
+	cout << "\n파일명을 입력해주세요 : ";
 	rewind(stdin);
-	gets_s(fName, sizeof(fName));
+	cin >> fName;
 
 	err = fopen_s(&fp, fName, "r");
 
@@ -144,13 +149,13 @@ void StdManagement::loadFile()
 	{
 		system("cls");
 
-		printf("\n파일 열기 실패!!\n\n");
+		cout << "\n파일 열기 실패!!\n\n";
 		return;
 	}
 
 	system("cls");
 
-	printf("\n파일 열기 성공!!\n\n");
+	cout << "\n파일 열기 성공!!\n\n";
 
 	while (!feof(fp))
 	{

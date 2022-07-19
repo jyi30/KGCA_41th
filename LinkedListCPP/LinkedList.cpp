@@ -61,7 +61,7 @@ void LinkedList::deleteAll() // 전체삭제
 	{
 		Student* nextNode = g_pCurrent->m_pNext;
 
-		free(g_pCurrent);
+		delete(g_pCurrent);
 		g_pCurrent = nextNode;
 	}
 
@@ -165,11 +165,11 @@ int LinkedList::isFull(StdManagement *manage)
 	{
 		char select;
 		system("cls");
-		printf("이미 리스트에 데이터가 존재합니다.\n기존 데이터를 삭제하고 진행할까요?\n");
-		printf("(Y/N) : ");
+		cout << "이미 리스트에 데이터가 존재합니다.\n기존 데이터를 삭제하고 진행할까요?\n";
+		cout << "(Y/N) : ";
 
 		rewind(stdin);
-		scanf_s("%c", &select, sizeof(select));
+		cin >> select;
 
 		if (select == 'y' || select == 'Y')
 		{

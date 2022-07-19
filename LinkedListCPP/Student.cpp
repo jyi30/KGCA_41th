@@ -2,7 +2,7 @@
 
 Student::Student()
 {
-	name[0] = 0;
+	fill_n(name, 20, 0);
 	age = 0;
 	score1 = 0;
 	score2 = 0;

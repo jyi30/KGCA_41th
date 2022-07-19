@@ -15,13 +15,13 @@ int main(void) {
 
 	while (1)
 	{
-		printf("======================================\n");
-		printf("            학생 관리 기록부           \n");
-		printf("======================================\n");
-		printf("1. 무작위 생성  2. 출력  3. 탐색  4. 추가  5. 삭제\n6. 전체 삭제  7. 저장  8. 불러오기  9. 정렬  0. 종료\n\n");
-		printf("입력 : ");
+		cout << "======================================\n";
+		cout << "            학생 관리 기록부           \n";
+		cout << "======================================\n";
+		cout << "1. 무작위 생성  2. 출력  3. 탐색  4. 추가  5. 삭제\n6. 전체 삭제  7. 저장  8. 불러오기  9. 정렬  0. 종료\n\n";
+		cout << "입력 : ";
 
-		scanf_s("%d", &select);
+		cin >> select;
 
 		switch (select)
 		{
@@ -29,13 +29,13 @@ int main(void) {
 		{
 			if (!manage.isFull(&manage))
 			{
-				printf("\n취소되었습니다.\n\n");
+				cout << "\n취소되었습니다.\n\n";
 				continue;
 			}
 
 			int count = 0;
-			printf("무작위 생성 횟수 입력 : ");
-			scanf_s("%d", &count);
+			cout << "무작위 생성 횟수 입력 : ";
+			cin >> count;
 			system("cls");
 			manage.create(count);
 
@@ -53,14 +53,14 @@ int main(void) {
 			if (manage.getHead()->m_pNext == manage.getTail())
 			{
 				system("cls");
-				printf("데이터가 비었습니다!!\n\n");
+				cout << "데이터가 비었습니다!!\n\n";
 
 				continue;
 			}
 
 			char name[30];
-			printf("이름을 입력해주세요 : ");
-			scanf_s("%s", name, sizeof(name));
+			cout << "이름을 입력해주세요 : ";
+			cin >> name;
 			system("cls");
 
 			Student* result = manage.search(name);
@@ -76,9 +76,9 @@ int main(void) {
 		{
 			int select = 0;
 
-			printf("\n1. 제일 앞에 삽입\n2. 제일 뒤에 삽입\n3. 특정 노드 전후에 삽입\n\n");
-			printf("선택 : ");
-			scanf_s("%d", &select);
+			cout << "\n1. 제일 앞에 삽입\n2. 제일 뒤에 삽입\n3. 특정 노드 전후에 삽입\n\n";
+			cout << "선택 : ";
+			cin >> select;
 
 
 			if (select == 1)
@@ -94,7 +94,7 @@ int main(void) {
 				if (manage.getHead()->m_pNext == manage.getTail())
 				{
 					system("cls");
-					printf("데이터가 비었습니다!!\n\n");
+					cout << "데이터가 비었습니다!!\n\n";
 
 					continue;
 				}
@@ -104,27 +104,27 @@ int main(void) {
 
 				char name[30];
 				int location = 0;
-				printf("삽입을 원하는 위치의 학생 이름을 입력해주세요 : ");
-				scanf_s("%s", name, sizeof(name));
+				cout << "삽입을 원하는 위치의 학생 이름을 입력해주세요 : ";
+				cin >> name;
 
 				Student* result = manage.search(name);
 
 				if (result == NULL)
 				{
 					system("cls");
-					printf("\n 존재하지 않는 학생입니다.");
+					cout << "\n 존재하지 않는 학생입니다.";
 
 					continue;
 				}
 
 				while (1)
 				{
-					printf("\n삽입 위치 선택(1. 전위, 2. 후위) : ");
-					scanf_s("%d", &location);
+					cout << "\n삽입 위치 선택(1. 전위, 2. 후위) : ";
+					cin >> location;
 
 					if (location < 1 || location > 2)
 					{
-						printf("잘못된 입력입니다.");
+						cout << "잘못된 입력입니다.";
 
 						continue;
 					}
@@ -136,7 +136,7 @@ int main(void) {
 
 			system("cls");
 			manage.allPrint();
-			printf("\n\n삽입 완료!\n\n");
+			cout << "\n\n삽입 완료!\n\n";
 
 			continue;
 		}
@@ -145,18 +145,18 @@ int main(void) {
 			if (manage.getHead()->m_pNext == manage.getTail())
 			{
 				system("cls");
-				printf("데이터가 비었습니다!!\n\n");
+				cout << "데이터가 비었습니다!!\n\n";
 
 				continue;
 			}
 
 			char name[30];
-			printf("이름을 입력해주세요 : ");
-			scanf_s("%s", name, sizeof(name));
+			cout << "이름을 입력해주세요 : ";
+			cin >> name;
 			delete(manage.search(name));
 
 			system("cls");
-			printf("\n\n삭제 완료!\n\n");
+			cout << "\n\n삭제 완료!\n\n";
 
 			continue;
 		}
@@ -165,7 +165,7 @@ int main(void) {
 			if (manage.getHead()->m_pNext == manage.getTail())
 			{
 				system("cls");
-				printf("데이터가 비었습니다!!\n\n");
+				cout << "데이터가 비었습니다!!\n\n";
 
 				continue;
 			}
@@ -173,7 +173,7 @@ int main(void) {
 			manage.deleteAll();
 
 			system("cls");
-			printf("삭제 완료\n\n");
+			cout << "삭제 완료\n\n";
 
 			continue;
 		}
@@ -181,7 +181,7 @@ int main(void) {
 		{
 			if (manage.getHead()->m_pNext == manage.getTail())
 			{
-				printf("저장할 데이터가 없습니다!!\n\n");
+				cout << "저장할 데이터가 없습니다!!\n\n";
 				continue;
 			}
 
@@ -198,7 +198,7 @@ int main(void) {
 			}
 			else
 			{
-				printf("\n취소되었습니다.\n\n");
+				cout << "\n취소되었습니다.\n\n";
 				continue;
 			}
 		}
@@ -209,14 +209,14 @@ int main(void) {
 		}
 		case 0: //종료
 		{
-			printf("\n프로그램을 종료합니다.\n\n");
+			cout << "\n프로그램을 종료합니다.\n\n";
 
 			break;
 		}
 		default: //없는 메뉴 대응
 		{
 			system("cls");
-			printf("\n잘못된 입력입니다.\n\n");
+			cout << "\n잘못된 입력입니다.\n\n";
 
 			continue;
 		}
