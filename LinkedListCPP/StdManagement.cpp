@@ -159,7 +159,7 @@ void StdManagement::loadFile()
 
 	while (!feof(fp))
 	{
-		Student* student = (Student*)calloc(1, sizeof(Student));
+		Student* student = new Student();
 		fscanf_s(fp, "%s %d %d %d %d %d\n", student->name, 20, &student->age, &student->score1, &student->score2, &student->score3, &student->total);
 		backInsert(student);
 	}
