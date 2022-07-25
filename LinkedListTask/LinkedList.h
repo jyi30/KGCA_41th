@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include "Student.h"
 using namespace std;
-class Student;
 
 template <class T>
 class TNode
@@ -30,6 +30,7 @@ public:
 	void allPrint();
 	void deleteAll(); 
 	TNode<T> search(char name[]);
+	void sort();
 
 public:
 	TNode<T>* getHead();

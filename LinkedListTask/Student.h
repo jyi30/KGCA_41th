@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include <iostream>
 using namespace std;
@@ -15,6 +16,18 @@ private:
 public:
 	Student* newStd();
 	Student* newStd(char name[], int age, int score1, int score2, int score3);
+	char getName();
+	void setName(char name[]);
+	int getAge();
+	void setAge(int age);
+	int getScore1();
+	void setScore1(int score1);
+	int getScore2();
+	void setScore2(int score2);
+	int getScore3();
+	void setScore3(int score3);
+	int getTotal();
+	void setTotal(int total);
 	Student();
 	~Student();
 };

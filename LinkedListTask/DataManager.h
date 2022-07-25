@@ -14,13 +14,16 @@ private:
 public:
 	DataManager();
 	~DataManager();
+	void init();
 	void randomCreate(int count);
 	void insert();
-	void deleteNode();
-	void deleteNode(char name[]);
+	//void deleteNode();
+	//void deleteNode(char name[]);
 	int isFull();
 	int isEmpty();
 	void print();
 	void print(char name[]);
+	void fileCtr(int num);
+	
 };
 

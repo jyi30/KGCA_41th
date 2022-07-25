@@ -2,7 +2,7 @@
 
 DataManager::DataManager()
 {
-	link.newList();
+	
 }
 
 DataManager::~DataManager()
@@ -13,11 +13,18 @@ DataManager::~DataManager()
 
 }
 
+void DataManager::init()
+{
+	TLinkedList<Student> link;
+	link.newList();
+}
+
 void DataManager::randomCreate(int count) //입력 받은 수 만큼 무작위 데이터 생성
 {
 	srand(time(NULL));
 	for (int i = 0; i < count; i++)
 	{
+		Student* newstd = new Student();
 		char name[20];
 		for (int j = 0; j < 4; j++)
 		{
@@ -28,7 +35,7 @@ void DataManager::randomCreate(int count) //입력 받은 수 만큼 무작위 데이터 생성
 		int score2 = rand() % 101;
 		int score3 = rand() % 101;
 
-		Student* newstd = student.newStd(name, age, score1, score2, score3);
+		
 
 		link.backInsert(*newstd);
 	}
@@ -88,10 +95,10 @@ void DataManager::insert()
 	cout << "\n\n삽입 완료!\n\n";
 }
 
-void DataManager::deleteNode(char name[])
-{
-
-}
+//void DataManager::deleteNode(char name[])
+//{
+//
+//}
 
 int DataManager::isFull()
 {
@@ -151,6 +158,33 @@ void DataManager::print(char name[])
 	link.print(link.search(name));
 }
 
+void DataManager::fileCtr(int num)
+{
+	if (num == 1)
+	{
+		if (!isEmpty())
+		{
+			fileio.saveFile(link);
+		}
+		else
+		{
+			return;
+		}
+	}
+	else if (num == 2)
+	{
+		if (isFull())
+		{
+			//fileio.loadFile(link);
+			link.allPrint();
+		}
+		else
+		{
+			cout << "\n취소되었습니다.\n\n";
+			return;
+		}
+	}
+}
 
 
 

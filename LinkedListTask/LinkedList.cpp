@@ -128,11 +128,11 @@ void TLinkedList<T>::deleteAll() // 전체삭제
 template <class T>
 TNode<T> TLinkedList<T>::search(char name[]) //노드 탐색(순차 탐색)
 {
-	if (isEmpty())
+	if (getHead()->m_pNext == getTail())
 	{
 		return;
 	}
-	for (TNode<T> node = link.getHead()->m_pNext; node != link.getTail(); node = node->m_pNext)
+	for (TNode<T> node = getHead()->m_pNext; node != getTail(); node = node->m_pNext)
 	{
 		Student* student = &node->Data;
 		if (strcmp(name, student->name) == 0)
@@ -144,6 +144,49 @@ TNode<T> TLinkedList<T>::search(char name[]) //노드 탐색(순차 탐색)
 	printf("찾는 값이 없습니다!\n\n");
 
 	return NULL;
+}
+
+template <class T>
+void TLinkedList<T>::sort()
+{
+	TNode<T>* cmpNode = m_pHead->m_pNext;
+	TNode<T>* nextNode;
+	TNode<T>* prevNode;
+	TNode<T>* cntNext;
+	m_pCurrent = m_pHead;
+
+	while (m_pCurrent != m_pTail->m_pPrev)
+	{
+		for (TNode<T> node = cmpNode->m_pNext; node != m_pTail; node = node->m_pNext)
+		{
+			Student student = node->data;
+			if (node->total < cmpNode->total)
+			{
+				cmpNode = node;
+			}
+		}
+
+		if (m_pCurrent->m_pNext == cmpNode)
+		{
+			m_pCurrent = m_pCurrent->m_pNext;
+			cmpNode = cmpNode->m_pNext;
+
+			continue;
+		}
+		prevNode = cmpNode->m_pPrev;
+		nextNode = cmpNode->m_pNext;
+		cntNext = m_pCurrent->m_pNext;
+
+		prevNode->m_pNext = nextNode;
+		nextNode->m_pPrev = prevNode;
+		m_pCurrent->m_pNext = cmpNode;
+		cmpNode->m_pPrev = m_pCurrent;
+		cmpNode->m_pNext = cntNext;
+		cntNext->m_pPrev = cmpNode;
+
+		m_pCurrent = m_pCurrent->m_pNext;
+		cmpNode = cmpNode->m_pNext;
+	}
 }
 
 

@@ -4,6 +4,8 @@ int main(void)
 {
 	DataManager dMgr;
 
+	dMgr.init();
+
 	int select = 0;
 
 	while (1)
@@ -11,7 +13,7 @@ int main(void)
 		cout << "======================================\n";
 		cout << "            학생 관리 기록부           \n";
 		cout << "======================================\n";
-		cout << "1. 무작위 생성  2. 출력  3. 탐색  4. 추가  5. 삭제\n6. 전체 삭제  7. 저장  8. 불러오기  9. 정렬  0. 종료\n\n";
+		cout << "1. 무작위 생성  2. 출력  3. 탐색  4. 추가  5. 삭제\n6. 전체 삭제  7. 파일관리  8. 정렬  0. 종료\n\n";
 		cout << "입력 : ";
 
 		cin >> select;
@@ -83,7 +85,7 @@ int main(void)
 			char name[30];
 			cout << "이름을 입력해주세요 : ";
 			cin >> name;
-			dMgr.deleteNode(name);
+			//dMgr.deleteNode(name);
 
 			system("cls");
 			cout << "\n\n삭제 완료!\n\n";
@@ -104,33 +106,19 @@ int main(void)
 
 			continue;
 		}
-		case 7: //저장
+		case 7: //파일관리
 		{
-			if (dMgr.isEmpty())
-			{
-				continue;
-			}
+			int num = 0;
+			
+			cout << "1. 저장하기\n2. 불러오기\n\n입력 : ";
+			cin >> num;
 
-			//link.saveFile();
+			dMgr.fileCtr(num);
 			continue;
 		}
-		case 8: //불러오기
+		case 8: //정렬
 		{
-			if (link.isFull(&link))
-			{
-				link.loadFile();
-				link.allPrint();
-				continue;
-			}
-			else
-			{
-				cout << "\n취소되었습니다.\n\n";
-				continue;
-			}
-		}
-		case 9: //정렬
-		{
-			link.sort();
+			//dMgr.sort();
 			continue;
 		}
 		case 0: //종료
