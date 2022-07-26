@@ -172,22 +172,16 @@ void DataManager::find(char name[])
 
 void DataManager::print()
 {
-	if (isEmpty())
-	{
-		return;
-	}
-	else
-	{
-		link.allPrint();
-	}
+
+	link.allPrint();
 
 	return;
 }
 
-void DataManager::print(char name[])
-{
-	link.print(link.search(name));
-}
+//void DataManager::print(char name[])
+//{
+//	link.print(link.search(name));
+//}
 
 void DataManager::fileCtr(int num)
 {
@@ -195,6 +189,7 @@ void DataManager::fileCtr(int num)
 	{
 		if (!isEmpty())
 		{
+			system("cls");
 			fileio.saveFile(link);
 		}
 		else
@@ -206,11 +201,9 @@ void DataManager::fileCtr(int num)
 	{
 		if (isFull())
 		{
-			fileio.loadFile(link);
-			
 			system("cls");
+			fileio.loadFile(link);
 			link.allPrint();
-			cout << "불러오기 완료!" << endl;
 		}
 		else
 		{
@@ -220,7 +213,7 @@ void DataManager::fileCtr(int num)
 	}
 }
 
-void DataManager::sort(int num)
+void DataManager::sort(int type)
 {
 	if (isEmpty())
 	{
@@ -229,11 +222,11 @@ void DataManager::sort(int num)
 
 	system("cls");
 
-	if (num == 1)
+	if (type == 1)
 	{
 		link.sortASC();
 	}
-	else if (num == 2)
+	else if (type == 2)
 	{
 		link.sortDESC();
 	}

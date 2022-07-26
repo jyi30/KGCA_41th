@@ -2,7 +2,6 @@
 
 void FileIO::saveFile(TLinkedList<Student> link)
 {
-	ofstream ofs;
 	ofs.open("students.txt", ios::out | ios::binary);
 
 	if (ofs.fail())
@@ -17,7 +16,7 @@ void FileIO::saveFile(TLinkedList<Student> link)
 		ofs << student.getName()<< " " << student.getAge() << " " <<  student.getScore1() << " " << student.getScore2() << " " << student.getScore3() << " " << student.getTotal() << endl;
 	}
 
-	cout << "저장 완료" << endl;
+	cout << "저장 완료\n" << endl;
 	ofs.close();
 
 	//FILE* fp;
@@ -54,13 +53,13 @@ void FileIO::saveFile(TLinkedList<Student> link)
 
 void FileIO::loadFile(TLinkedList<Student> link)
 {
-	ifstream ifs;
 	char name[20];
 	int age;
 	int score1;
 	int score2;
 	int score3;
 	int total;
+	
 	ifs.open("students.txt", ios::in | ios::binary);
 
 	if (ifs.fail())
@@ -69,13 +68,28 @@ void FileIO::loadFile(TLinkedList<Student> link)
 		return;
 	}
 
-	while (!ifs.eof())
+	while (1)
 	{
 		Student* student = new Student();
 		ifs >> name >> age >> score1 >> score2 >> score3 >> total;
+		
+		if (ifs.eof())
+		{
+			break;
+		}
+
 		link.backInsert(student->newStd(name, age, score1, score2, score3, total));
 	}
 
+	if (link.getHead()->m_pNext == link.getTail())
+	{
+		cout << "불러올 데이터가 없습니다." << endl;
+		ifs.close();
+
+		return;
+	}
+
+	cout << "불러오기 완료!\n" << endl;
 	ifs.close();
 
 

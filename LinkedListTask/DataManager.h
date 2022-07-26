@@ -23,8 +23,8 @@ public:
 	int isEmpty();
 	void find(char name[]);
 	void print();
-	void print(char name[]);
-	void sort(int num);
+	//void print(char name[]);
+	void sort(int type);
 	void fileCtr(int num);
 	
 };
