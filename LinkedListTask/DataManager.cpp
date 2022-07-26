@@ -10,9 +10,6 @@ DataManager::DataManager()
 DataManager::~DataManager()
 {
 	link.deleteAll();
-	delete(&link);
-	delete(&fileio);
-
 }
 
 void DataManager::init()
