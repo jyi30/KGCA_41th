@@ -34,7 +34,7 @@ Student* Student::newStd()
 	return student;
 }
 
-Student* Student::newStd(char name[], int age, int score1, int score2, int score3)
+Student* Student::newStd(char name[], int age, int score1, int score2, int score3, int total)
 {
 	Student* student = new Student();
 	
@@ -43,7 +43,7 @@ Student* Student::newStd(char name[], int age, int score1, int score2, int score
 	student->score1 = score1;
 	student->score2 = score2;
 	student->score3 = score3;
-	student->total = (student->score1) + (student->score2) + (student->score3);
+	student->total = total;
 
 	return student;
 }

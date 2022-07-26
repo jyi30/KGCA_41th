@@ -29,10 +29,17 @@ int main(void)
 			}
 
 			int count = 0;
-			cout << "무작위 생성 횟수 입력 : ";
+			cout << "무작위 생성 횟수 입력(최대 20) : ";
 			cin >> count;
-			system("cls");
 
+			if (count < 1 || count > 20)
+			{
+				system("cls");
+				cout << "잘못된 숫자 입력입니다!\n" << endl;
+				continue;
+			}
+	
+			system("cls");
 			dMgr.randomCreate(count);
 
 			continue;

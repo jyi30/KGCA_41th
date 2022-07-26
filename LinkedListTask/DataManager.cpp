@@ -206,8 +206,11 @@ void DataManager::fileCtr(int num)
 	{
 		if (isFull())
 		{
-			//fileio.loadFile(link);
+			fileio.loadFile(link);
+			
+			system("cls");
 			link.allPrint();
+			cout << "불러오기 완료!" << endl;
 		}
 		else
 		{
