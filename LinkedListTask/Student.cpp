@@ -48,17 +48,17 @@ Student* Student::newStd(char name[], int age, int score1, int score2, int score
 	return student;
 }
 
-char Student::getName()
+const char* Student::getName()
 {
-	return *name;
+	return name;
 }
 
-void Student::setName(char name[])
+void Student::setName(char name2[])
 {
-	*this->name = *name;
+	strncpy(this->name, name2, strlen(name2) + 1);
 }
 
-int Student::getAge()
+const int Student::getAge()
 {
 	return age;
 }
@@ -68,7 +68,7 @@ void Student::setAge(int age)
 	this->age = age;
 }
 
-int Student::getScore1()
+const int Student::getScore1()
 {
 	return score1;
 }
@@ -78,7 +78,7 @@ void Student::setScore1(int score1)
 	this->score1 = score1;
 }
 
-int Student::getScore2()
+const int Student::getScore2()
 {
 	return score2;
 }
@@ -88,7 +88,7 @@ void Student::setScore2(int score2)
 	this->score2 = score2;
 }
 
-int Student::getScore3()
+const int Student::getScore3()
 {
 	return score3;
 }
@@ -98,7 +98,7 @@ void Student::setScore3(int score3)
 	this->score3 = score3;
 }
 
-int Student::getTotal()
+const int Student::getTotal()
 {
 	return total;
 }

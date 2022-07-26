@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include <string>
 #include "Student.h"
 using namespace std;
 
@@ -23,14 +24,16 @@ private:
 
 public:
 	void newList();
-	void backInsert(T student);
+	void backInsert(T* student);
 	void frontInsert(T student);
-	void insert(T student, TNode<T> currentNode, int select);
-	void print(TNode<T> node);
+	void insert(T student, TNode<T>* currentNode, int select);
+	void print(TNode<Student>* node);
 	void allPrint();
+	void deleteNode(TNode<T>* delNode);
 	void deleteAll(); 
-	TNode<T> search(char name[]);
-	void sort();
+	TNode<T>* search(char name[]);
+	void sortASC();
+	void sortDESC();
 
 public:
 	TNode<T>* getHead();

@@ -1,5 +1,7 @@
 #include "DataManager.h"
 
+TLinkedList<Student> link;
+
 DataManager::DataManager()
 {
 	
@@ -15,7 +17,6 @@ DataManager::~DataManager()
 
 void DataManager::init()
 {
-	TLinkedList<Student> link;
 	link.newList();
 }
 
@@ -25,20 +26,23 @@ void DataManager::randomCreate(int count) //입력 받은 수 만큼 무작위 데이터 생성
 	for (int i = 0; i < count; i++)
 	{
 		Student* newstd = new Student();
-		char name[20];
+		char name[20] = { 0, };
 		for (int j = 0; j < 4; j++)
 		{
 			name[j] = 65 + rand() % 26;
 		}
-		int age = rand() % 60;
-		int score1 = rand() % 101;
-		int score2 = rand() % 101;
-		int score3 = rand() % 101;
+		newstd->setName(name);
+		newstd->setAge(rand() % 60);
+		newstd->setScore1(rand() % 101);
+		newstd->setScore2(rand() % 101);
+		newstd->setScore3(rand() % 101);
+		newstd->setTotal(newstd->getScore1() + newstd->getScore2() + newstd->getScore3());
 
-		
-
-		link.backInsert(*newstd);
+		link.backInsert(newstd);
 	}
+
+	link.allPrint();
+	cout << "생성 완료!" << endl;
 }
 
 void DataManager::insert()
@@ -56,7 +60,7 @@ void DataManager::insert()
 	}
 	else if (select == 2)
 	{
-		link.backInsert(*student.newStd());
+		link.backInsert(student.newStd());
 	}
 	else
 	{
@@ -92,13 +96,26 @@ void DataManager::insert()
 
 	system("cls");
 	link.allPrint();
-	cout << "\n\n삽입 완료!\n\n";
+	cout << "삽입 완료!\n\n";
 }
 
-//void DataManager::deleteNode(char name[])
-//{
-//
-//}
+void DataManager::deleteNode(char name[])
+{
+	if (link.search(name) == NULL)
+	{
+		cout << "찾는 값이 존재하지 않습니다.\n" << endl;
+		return;
+	}
+
+	link.deleteNode(link.search(name));
+	link.allPrint();
+	cout << "삭제 완료!\n" << endl;
+}
+
+void DataManager::deleteNode()
+{
+	link.deleteAll();
+}
 
 int DataManager::isFull()
 {
@@ -130,14 +147,28 @@ int DataManager::isEmpty()
 	if (link.getHead()->m_pNext == link.getTail())
 	{
 		system("cls");
-		cout << "데이터가 존재하지 않습니다." << endl;
+		cout << "데이터가 존재하지 않습니다.\n" << endl;
 		return 1;
 	}
 	else
 	{
-		return -1;
+		return 0;
 	}
 }
+
+void DataManager::find(char name[])
+{
+	if (link.search(name) == NULL)
+	{
+		cout << "찾는 값이 존재하지 않습니다.\n" << endl;
+		return;
+	}
+	else
+	{
+		link.print(link.search(name));
+	}
+}
+
 
 void DataManager::print()
 {
@@ -184,6 +215,29 @@ void DataManager::fileCtr(int num)
 			return;
 		}
 	}
+}
+
+void DataManager::sort(int num)
+{
+	if (isEmpty())
+	{
+		return;
+	}
+
+	system("cls");
+
+	if (num == 1)
+	{
+		link.sortASC();
+	}
+	else if (num == 2)
+	{
+		link.sortDESC();
+	}
+
+	link.allPrint();
+
+	cout << "정렬 완료!\n" << endl;
 }
 
 

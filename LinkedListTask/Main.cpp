@@ -62,10 +62,7 @@ int main(void)
 			cin >> name;
 			system("cls");
 
-			if (name != NULL)
-			{
-				dMgr.print(name);
-			}
+			dMgr.find(name);
 
 			continue;
 		}
@@ -82,13 +79,12 @@ int main(void)
 				continue;
 			}
 
-			char name[30];
+			char name[30] = { 0, };
 			cout << "이름을 입력해주세요 : ";
 			cin >> name;
-			//dMgr.deleteNode(name);
 
 			system("cls");
-			cout << "\n\n삭제 완료!\n\n";
+			dMgr.deleteNode(name);
 
 			continue;
 		}
@@ -99,7 +95,7 @@ int main(void)
 				continue;
 			}
 
-			//link.deleteNode();
+			dMgr.deleteNode();
 
 			system("cls");
 			cout << "삭제 완료\n\n";
@@ -118,7 +114,11 @@ int main(void)
 		}
 		case 8: //정렬
 		{
-			//dMgr.sort();
+			int num = 0;
+			cout << "1. 오름차순\n2. 내림차순\n\n입력 : ";
+			cin >> num;
+
+			dMgr.sort(num);
 			continue;
 		}
 		case 0: //종료
