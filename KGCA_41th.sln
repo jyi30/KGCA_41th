@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicCast", "DynamicCast\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryTree", "BinaryTree\BinaryTree.vcxproj", "{69698E68-C263-48B1-A3FE-E33B32C0FF7A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinarySearchTree", "BinarySearchTree\BinarySearchTree.vcxproj", "{42C06D3C-E531-41EE-AB85-157AF5206C94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -163,6 +165,14 @@ Global
 		{69698E68-C263-48B1-A3FE-E33B32C0FF7A}.Release|x64.Build.0 = Release|x64
 		{69698E68-C263-48B1-A3FE-E33B32C0FF7A}.Release|x86.ActiveCfg = Release|Win32
 		{69698E68-C263-48B1-A3FE-E33B32C0FF7A}.Release|x86.Build.0 = Release|Win32
+		{42C06D3C-E531-41EE-AB85-157AF5206C94}.Debug|x64.ActiveCfg = Debug|x64
+		{42C06D3C-E531-41EE-AB85-157AF5206C94}.Debug|x64.Build.0 = Debug|x64
+		{42C06D3C-E531-41EE-AB85-157AF5206C94}.Debug|x86.ActiveCfg = Debug|Win32
+		{42C06D3C-E531-41EE-AB85-157AF5206C94}.Debug|x86.Build.0 = Debug|Win32
+		{42C06D3C-E531-41EE-AB85-157AF5206C94}.Release|x64.ActiveCfg = Release|x64
+		{42C06D3C-E531-41EE-AB85-157AF5206C94}.Release|x64.Build.0 = Release|x64
+		{42C06D3C-E531-41EE-AB85-157AF5206C94}.Release|x86.ActiveCfg = Release|Win32
+		{42C06D3C-E531-41EE-AB85-157AF5206C94}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,6 +193,7 @@ Global
 		{A2C09C20-CA67-48B1-8481-5704EDC499AE} = {BA84DF29-C781-4776-8A43-CE2C491EAB25}
 		{1A577B91-2447-4CBC-900B-85FCA32B8E04} = {BA84DF29-C781-4776-8A43-CE2C491EAB25}
 		{69698E68-C263-48B1-A3FE-E33B32C0FF7A} = {BA84DF29-C781-4776-8A43-CE2C491EAB25}
+		{42C06D3C-E531-41EE-AB85-157AF5206C94} = {BA84DF29-C781-4776-8A43-CE2C491EAB25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FED1F129-FCF0-4E32-AC4E-7CF17192221E}

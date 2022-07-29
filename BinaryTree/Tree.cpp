@@ -18,7 +18,7 @@ public:
 	}
 	~TNode()
 	{
-		std::cout << this->index << " ";
+		//std::cout << this->index << " ";
 	}
 };
 
@@ -32,7 +32,7 @@ TNode* createNode(TNode* pParents)
 {
 	TNode* newNode = new TNode;
 	newNode->index = g_pCounter++;
-	if (pParents != nullptr)
+	if (pParents != nullptr) //루트노드는 제외
 	{
 		newNode->m_pParents = pParents;
 		newNode->depth = pParents->depth + 1;
@@ -50,10 +50,10 @@ void build(TNode* pParents)
 
 	pParents->m_pChild[0] = createNode(pParents);
 	pParents->m_pChild[1] = createNode(pParents);
-	int iSelectLeft = 2 * pParents->index + 1;
+	/*int iSelectLeft = 2 * pParents->index + 1;
 	int iSelectRight = 2 * (pParents->index + 1);
 	g_pNodeArray[iSelectLeft] = pParents->m_pChild[0];
-	g_pNodeArray[iSelectRight] = pParents->m_pChild[1];
+	g_pNodeArray[iSelectRight] = pParents->m_pChild[1];*/
 	build(pParents->m_pChild[0]);
 	build(pParents->m_pChild[1]);
 }
@@ -122,7 +122,7 @@ int main(void)
 	g_pNodeArray[0] = rootNode;
 
 	build(rootNode);
-	printTree();
+	print(rootNode);
 	cout << endl;
 	deleteAll(rootNode);
 }
