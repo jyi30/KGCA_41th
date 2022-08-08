@@ -58,6 +58,12 @@ bool find_TItem(TItem* a)  //TItem 클래스 탐색을 위한 조건 정의
 	return a->iValue == g_iFindValue;
 }
 
+int gen()
+{
+	static int iCount = 0;
+	return iCount++;
+}
+
 int main(void)
 {
 	vector<int> listIntA(20, 7);
@@ -133,6 +139,13 @@ int main(void)
 
 	vector<int> copyvector;
 	copy(listInt.begin(), listInt.end(), back_inserter(copyvector));
+
+	//std::generate
+	//특정 범위의 원소를 함수의 반환값으로 채운다.
+	generate(listInt.begin(), listInt.end(), gen);
+
+	//std::transfrom
+	vector<int> result2;
 
 
 
