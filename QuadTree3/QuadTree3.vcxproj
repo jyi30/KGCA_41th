@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2c417fa7-5d7f-407f-a9d4-5f280138a5f8}</ProjectGuid>
-    <RootNamespace>QuadTree2</RootNamespace>
+    <ProjectGuid>{3ebe3cf1-4c19-4df5-991f-23a20d36cf37}</ProjectGuid>
+    <RootNamespace>QuadTree3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>../../output/debug/</OutDir>
-    <IntDir>../../output/debug/QuadTree2/</IntDir>
+    <IntDir>../../output/debug/QuadTree3/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,7 +141,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="QuadTree2.cpp" />
+    <ClCompile Include="Quadtree.cpp" />
+    <ClCompile Include="TCollision.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TCollision.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

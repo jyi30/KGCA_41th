@@ -186,6 +186,84 @@ bool TQuadTree::rectToInRect(TNode* pNode, TObject* pObj)
 	return false;
 }
 
+int TQuadTree::rectToRect(TNode* pNode, TObject* pObj)
+{
+	// 0 : 완전제외(0)
+	// 1 : 완전포함(1) -> 걸쳐져 있는 상태(2)
+	// x1(10)-------30-------x2(40)
+	float x1 = pNode->m_fX;
+	float y1 = pNode->m_fY;
+	float x2 = pNode->m_fX + pNode->m_fWidth;
+	float y2 = pNode->m_fY + pNode->m_fHeight;
+
+	float z1 = pObj->m_fX;
+	float w1 = pObj->m_fY;
+	float z2 = pObj->m_fX + pObj->m_fWidth;
+	float w2 = pObj->m_fY + pObj->m_fHeight;
+	
+	//합집합
+	float fMinX;
+	float fMinY;
+	float fMaxX;
+	float fMaxY;
+
+	fMinX = x1 < z1 ? x1 : z1;
+	fMinY = y1 < w1 ? y1 : w1;
+	fMaxX = x2 < z2 ? x2 : z2;
+	fMaxY = y2 < w2 ? y2 : w2;
+
+	// 가로판정
+	if ((pNode->m_fWidth + pObj->m_fWidth) >= (fMaxX - fMinX))
+	{	//세로판정
+		if ((pNode->m_fHeight + pObj->m_fHeight) >= (fMaxY - fMinY))
+		{
+			//교차한다. 교집합
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int TQuadTree::rectToRect(TObject* pDestObj, TObject* pObj)
+{
+	// 0 : 완전제외(0)
+	// 1 : 완전포함(1) -> 걸쳐져 있는 상태(2)
+	// x1(10)-------30-------x2(40)
+	float x1 = pDestObj->m_fX;
+	float y1 = pDestObj->m_fY;
+	float x2 = pDestObj->m_fX + pDestObj->m_fWidth;
+	float y2 = pDestObj->m_fY + pDestObj->m_fHeight;
+
+	float z1 = pObj->m_fX;
+	float w1 = pObj->m_fY;
+	float z2 = pObj->m_fX + pObj->m_fWidth;
+	float w2 = pObj->m_fY + pObj->m_fHeight;
+
+	//합집합
+	float fMinX;
+	float fMinY;
+	float fMaxX;
+	float fMaxY;
+
+	fMinX = x1 < z1 ? x1 : z1;
+	fMinY = y1 < w1 ? y1 : w1;
+	fMaxX = x2 > z2 ? x2 : z2;
+	fMaxY = y2 > w2 ? y2 : w2;
+
+	// 가로판정
+	if ((pDestObj->m_fWidth + pObj->m_fWidth) >= (fMaxX - fMinX))
+	{	//세로판정
+		if ((pDestObj->m_fHeight + pObj->m_fHeight) >= (fMaxY - fMinY))
+		{
+			//교차한다. 교집합
+			return 1;
+		}
+	}
+	return 0;
+}
+
+
+
 std::vector<TObject*> TQuadTree::collision(TObject* pObj)
 {
 	std::vector<TObject*> list;
@@ -195,7 +273,27 @@ std::vector<TObject*> TQuadTree::collision(TObject* pObj)
 
 void TQuadTree::getCollisionObject(TNode* pNode, TObject* pObj, std::vector<TObject*>& list)
 {
-
+	if (pNode == nullptr)
+	{
+		return;
+	}
+	for (int iObj = 0; iObj < pNode->m_ObjectList.size(); iObj++)
+	{
+		if (rectToRect(pNode->m_ObjectList[iObj], pObj))
+		{
+			list.push_back(pNode->m_ObjectList[iObj]);
+		}
+	}
+	if (pNode->m_pChlid[0] == nullptr)
+	{
+		for (int iChild = 0; iChild < 4; iChild++)
+		{
+			if (rectToRect(pNode->m_pChlid[iChild], pObj))
+			{
+				getCollisionObject(pNode->m_pChlid[iChild], pObj, list);
+			}
+		}
+	}
 }
 
 int main()
@@ -212,5 +310,12 @@ int main()
 	}
 
 	std::vector<TObject*> list = quadTree.collision(&player);
+	if (!list.empty())
+	{
+		for (int iObj = 0; iObj < list.size(); iObj++)
+		{
+			std::cout << list[iObj]->m_fX << list[iObj]->m_fY << std::endl;
+		}
+	}
 
 }

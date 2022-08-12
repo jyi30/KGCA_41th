@@ -25,7 +25,7 @@ class DynamicD : public DynamicB, public DynamicC
 void f()
 {
 	DynamicD* pd = new DynamicD;
-	DynamicA* pa = dynamic_cast<DynamicA*>(pd);
+//	DynamicA* pa = dynamic_cast<DynamicA*>(pd);
 	DynamicB* pb = dynamic_cast<DynamicB*>(pd);
 	DynamicA* pa2 = dynamic_cast<DynamicA*>(pb);
 }
