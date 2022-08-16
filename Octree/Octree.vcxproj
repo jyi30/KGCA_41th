@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3ebe3cf1-4c19-4df5-991f-23a20d36cf37}</ProjectGuid>
-    <RootNamespace>QuadTree3</RootNamespace>
+    <ProjectGuid>{a9221f8b-92fd-411b-8976-ab1dda16bd04}</ProjectGuid>
+    <RootNamespace>Octree</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -78,8 +78,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>../../output/debug/</OutDir>
-    <IntDir>../../output/debug/QuadTree3/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,11 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="QuadTree3.cpp" />
-    <ClCompile Include="TCollision.cpp" />
+    <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="TGameCore.cpp" />
+    <ClCompile Include="TNode.cpp" />
+    <ClCompile Include="TObject.cpp" />
+    <ClCompile Include="TOctree.cpp" />
+    <ClCompile Include="TSpacePartition.cpp" />
+    <ClCompile Include="TVector.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TCollision.h" />
+    <ClInclude Include="TGameCore.h" />
+    <ClInclude Include="TNode.h" />
+    <ClInclude Include="TObject.h" />
+    <ClInclude Include="TOctree.h" />
+    <ClInclude Include="TSpacePartition.h" />
+    <ClInclude Include="TVector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
