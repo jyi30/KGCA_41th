@@ -1,3 +1,4 @@
+#include <Windows.h>
 #include "TCollision.h"
 
 class TObject
@@ -155,10 +156,45 @@ TNode* TQuadTree3::FindNode(TNode* pNode, TObject* pObj)
 	return pNode;
 }
 
+std::vector<TObject*> TQuadTree3::Collision(TObject* pObj)
+{
+	std::vector<TObject*> list;
+	GetCollisionObject(this->m_pRootNode, pObj, list);
+	return list;
+}
+
+void TQuadTree3::GetCollisionObject(TNode* pNode, TObject* pSrcObject, std::vector<TObject*>& list)
+{
+	if (pNode == nullptr)
+	{
+		return;
+	}
+	for (int iObj = 0; iObj < pNode->m_ObjectList.size(); iObj++)
+	{
+		if (TCollision::CircleToCircle(pNode->m_ObjectList[iObj]->m_Circle, pSrcObject->m_Circle))
+		{
+			if (TCollision::rectToRect(pNode->m_ObjectList[iObj]->m_rt, pSrcObject->m_rt))
+			{
+				list.push_back(pNode->m_ObjectList[iObj]);
+			}
+		}
+	}
+	if (pNode->m_pChild[0] != nullptr)
+	{
+		for (int iChild = 0; iChild < 4; iChild++)
+		{
+			if (TCollision::rectToRect(pNode->m_pChild[iChild]->m_rt, pSrcObject->m_rt))
+			{
+				GetCollisionObject(pNode->m_pChild[iChild], pSrcObject, list);
+			}
+		}
+	}
+}
+
 int main()
 {
 	TObject player;
-	player.SetPosition(0, 100, 20, 20);
+	player.SetPosition(0, 100, 50, 50);
 	TQuadTree3 quadTree;
 	quadTree.Create(100.0f, 100.0f);
 	float fDistance = 0.0f;
@@ -171,6 +207,41 @@ int main()
 	while (1)
 	{
 		std::vector<TObject*> list = quadTree.Collision(&player);
-		std::cout << "player:" << 
+		std::cout << "player:"
+			<< player.m_rt.x1 << "," << player.m_rt.y1 << ","
+			<< player.m_rt.x2 << "," << player.m_rt.y2
+			<< std::endl;
+		if (!list.empty())
+		{
+			for (int iObj = 0; iObj < list.size(); iObj++)
+			{
+				std::cout << "object : "
+					<< list[iObj]->m_rt.x1 << "," << list[iObj]->m_rt.y1 << ","
+					<< list[iObj]->m_rt.x2 << "," << list[iObj]->m_rt.y2
+					<< std::endl;
+			}
+		}
+		static float fDirectionX = 10.0f;
+		if (rand() % 2 == 0)
+		{
+			fDirectionX *= -1.0f;
+		}
+		static float fDirectionY = 10.0f;
+		if (rand() % 2 == 0)
+		{
+			fDirectionY *= -1.0f;
+		}
+		player.m_rt.x1 = player.m_rt.x1 + fDirectionX;
+		player.m_rt.y1 = player.m_rt.y1 + fDirectionY;
+
+		player.m_rt.x1 = min(player.m_rt.x1, 100.0f);
+		player.m_rt.x1 = max(player.m_rt.x1, 0);
+		player.m_rt.y1 = min(player.m_rt.y1, 100.0f);
+		player.m_rt.y1 = max(player.m_rt.y1, 0);
+
+		player.SetPosition(player.m_rt.x1, player.m_rt.y1, 30, 30);
+
+		Sleep(100);
+		system("cls");
 	}
 }
