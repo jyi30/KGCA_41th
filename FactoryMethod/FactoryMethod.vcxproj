@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a9221f8b-92fd-411b-8976-ab1dda16bd04}</ProjectGuid>
-    <RootNamespace>Octree</RootNamespace>
+    <ProjectGuid>{6aa21ce5-926d-4023-b850-215463f4f96a}</ProjectGuid>
+    <RootNamespace>FactoryMethod</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>../../output/debug/</OutDir>
-    <IntDir>../../output/debug/Octree/</IntDir>
+    <IntDir>../../output/debug/FactoryMethod/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,21 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Octree.cpp" />
-    <ClCompile Include="TGameCore.cpp" />
-    <ClCompile Include="TNode.cpp" />
-    <ClCompile Include="TObject.cpp" />
-    <ClCompile Include="TOctree.cpp" />
-    <ClCompile Include="TSpacePartition.cpp" />
-    <ClCompile Include="TVector.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="TGameCore.h" />
-    <ClInclude Include="TNode.h" />
-    <ClInclude Include="TObject.h" />
-    <ClInclude Include="TOctree.h" />
-    <ClInclude Include="TSpacePartition.h" />
-    <ClInclude Include="TVector.h" />
+    <ClCompile Include="FactoryMethodPattern.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

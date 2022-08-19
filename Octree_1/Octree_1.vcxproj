@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a9221f8b-92fd-411b-8976-ab1dda16bd04}</ProjectGuid>
-    <RootNamespace>Octree</RootNamespace>
+    <ProjectGuid>{304aa990-91a1-4472-84ef-867e98542dbe}</ProjectGuid>
+    <RootNamespace>Octree1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>../../output/debug/</OutDir>
-    <IntDir>../../output/debug/Octree/</IntDir>
+    <OutDir>../../output/Debug/Octree_1</OutDir>
+    <IntDir>../../output/Debug/Octree_1</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -117,7 +117,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,21 +141,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="Sample.cpp" />
+    <ClCompile Include="TCollision.cpp" />
+    <ClCompile Include="TEnemy.cpp" />
     <ClCompile Include="TGameCore.cpp" />
+    <ClCompile Include="TGamePlayer.cpp" />
     <ClCompile Include="TNode.cpp" />
     <ClCompile Include="TObject.cpp" />
     <ClCompile Include="TOctree.cpp" />
+    <ClCompile Include="TQuadtree.cpp" />
     <ClCompile Include="TSpacePartition.cpp" />
     <ClCompile Include="TVector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TCollision.h" />
+    <ClInclude Include="TEnemy.h" />
     <ClInclude Include="TGameCore.h" />
+    <ClInclude Include="TGamePlayer.h" />
     <ClInclude Include="TNode.h" />
     <ClInclude Include="TObject.h" />
     <ClInclude Include="TOctree.h" />
+    <ClInclude Include="TQuadtree.h" />
     <ClInclude Include="TSpacePartition.h" />
     <ClInclude Include="TVector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
