@@ -14,7 +14,7 @@ public:
 	int* pDataTTriangle;
 	int iDataTTriangle[100];
 public:
-	virtual TGraphicObject* Clone()
+	virtual TGraphicObject* Clone() 
 	{
 		return new TTriangle(*this);
 	}
