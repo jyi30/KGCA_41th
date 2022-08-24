@@ -1,10 +1,5 @@
 #pragma once
-#include <windows.h>
-#include <map>
-#include <vector>
-#include <list>
-#include <set>
-#include <string>
+#include "TStd.h"
 
 class TWindow
 {

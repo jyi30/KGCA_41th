@@ -16,6 +16,7 @@ LRESULT TWindow::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 	return DefWindowProc(hWnd, message, wParam, lParam);
+	//메세지 처리 불가시 넘김
 }
 
 bool TWindow::SetWindow(HINSTANCE hInst, const WCHAR* szTitle, UINT iWidth, UINT iHeight)

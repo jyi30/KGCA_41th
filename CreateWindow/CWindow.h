@@ -1,7 +1,7 @@
 #pragma once
 #include "TWindow.h"
 
-class Main : public TWindow
+class CWindow : public TWindow
 {
 public:
 	bool Init();
