@@ -1,5 +1,6 @@
 #include "TWindow.h"
-
+HWND g_hWnd;
+RECT g_rtClient;
 TWindow* g_pWindow = nullptr;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -32,12 +33,16 @@ BOOL TWindow::InitInstance(const WCHAR* szTitle, UINT iWidth, UINT iHeight)
 	{
 		return FALSE;
 	}
+	m_hWnd = hWnd;
+	g_hWnd = hWnd;
 	ShowWindow(hWnd, SW_SHOW);
-	/*GetWindowRect(hWnd, &m_rtWindowBounds);
+	GetWindowRect(hWnd, &m_rtWindowBounds);
 	GetClientRect(hWnd, &m_rtWindowClient);
+	m_rtWindowClient = m_rtWindowClient;
+
 	m_iWindowWidth = m_rtWindowClient.right - m_rtWindowClient.left;
 	m_iWindowHeight = m_rtWindowClient.bottom - m_rtWindowClient.top;
-	CenterWindow();*/
+	CenterWindow();
 
 	return TRUE;
 }

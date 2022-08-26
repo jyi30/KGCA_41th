@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CWindow.cpp" />
+    <ClCompile Include="TDevice.cpp" />
+    <ClCompile Include="TWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CWindow.h" />
+    <ClInclude Include="TDevice.h" />
+    <ClInclude Include="TStd.h" />
+    <ClInclude Include="TWindow.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,15 +149,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\CreateWindow\CWindow.cpp" />
-    <ClCompile Include="..\CreateWindow\TWindow.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\CreateWindow\CWindow.h" />
-    <ClInclude Include="..\CreateWindow\TStd.h" />
-    <ClInclude Include="..\CreateWindow\TWindow.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
