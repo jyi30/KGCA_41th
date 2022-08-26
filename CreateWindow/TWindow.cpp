@@ -9,6 +9,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 LRESULT TWindow::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	msglist.push_back(message);
 	switch (message)
 	{
 	case WM_DESTROY:
@@ -33,7 +34,7 @@ bool TWindow::SetWindow(HINSTANCE hInst, const WCHAR* szTitle, UINT iWidth, UINT
 
 ATOM TWindow::MyRegisterClass()
 {
-	WNDCLASSEX wcex;
+	WNDCLASSEXW wcex;
 	ZeroMemory(&wcex, sizeof(WNDCLASSEX));
 	wcex.cbSize = sizeof(WNDCLASSEX); //구조체의 크기를 결정
 	wcex.style = CS_HREDRAW | CS_VREDRAW; //윈도우 스타일(보통 비트연산자를 사용하여 결합
@@ -41,7 +42,7 @@ ATOM TWindow::MyRegisterClass()
 	wcex.hbrBackground = CreateSolidBrush(RGB(100, 100, 100)); //윈도우 배경화면을 지정
 	wcex.lpszClassName = L"KGCA 윈도우"; // 클래스 이름 지정
 	wcex.lpfnWndProc = WndProc; //윈도우 메세지 콜백함수를 지정
-	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW); // 윈도우에 사용할 커서 지정
+	wcex.hCursor = LoadCursor(nullptr, IDC_WAIT); // 윈도우에 사용할 커서 지정
 
 	return RegisterClassEx(&wcex);
 }
@@ -51,7 +52,7 @@ BOOL TWindow::InitInstance(const WCHAR* szTitle, UINT iWidth, UINT iHeight)
 	m_dwWindowStyle = WS_OVERLAPPEDWINDOW;
 	RECT rc = { 0, 0, iWidth, iHeight };
 	AdjustWindowRect(&rc, m_dwWindowStyle, FALSE); //작업 영역, 윈도우 스타일, 메뉴 여부
-	
+	msglist.clear();
 	HWND hWnd = CreateWindowW(L"KGCA윈도우", szTitle, m_dwWindowStyle, 0, 0, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, m_hInstance, nullptr);
 	
 	if (!hWnd)
@@ -59,6 +60,11 @@ BOOL TWindow::InitInstance(const WCHAR* szTitle, UINT iWidth, UINT iHeight)
 		return FALSE;
 	}
 	ShowWindow(hWnd, SW_SHOW);
+	/*GetWindowRect(hWnd, &m_rtWindowBounds);
+	GetClientRect(hWnd, &m_rtWindowClient);
+	m_iWindowWidth = m_rtWindowClient.right - m_rtWindowClient.left;
+	m_iWindowHeight = m_rtWindowClient.bottom - m_rtWindowClient.top;
+	CenterWindow();*/
 
 	return TRUE;
 }

@@ -11,6 +11,9 @@ public:
 	RECT m_rtWindowClient; // 클라이언트 영역
 	UINT m_iWindowWidth; // 클라이언트 영역 가로 크기
 	UINT m_iWindowHeight; // 클라이언트 영역 세로 크기
+#ifdef _DEBUG
+	std::vector<UINT> msglist;
+#endif
 
 public:
 	bool SetWindow(HINSTANCE hInst, const WCHAR* szTitle, UINT iWidth = 1024, UINT iHeight = 768);

@@ -20,4 +20,4 @@ bool CWindow::Release()
 	return true;
 }
 
-GAME_RUN(CreateWindow_0, 1024, 768)
+GAME_RUN(CreateDevice_0, 1024, 768)
