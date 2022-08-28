@@ -1,5 +1,4 @@
 #pragma once
-#include "TQuadtree.h"
 #include "TOctree.h"
 #include "TGamePlayer.h"
 #include "TEnemy.h"
@@ -8,7 +7,6 @@ class TGameCore
 {
 public:
     TGamePlayer             m_Player;   
-    TGamePlayer2D           m_Player2D;
 public:
     TSpacePartition*        m_pWorldSP;
     std::map<int, TBaseObject*> m_npcList;
