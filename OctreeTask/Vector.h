@@ -7,7 +7,7 @@
 #define RadianToDegree(x) (x *(180.0f / PI))
 #define Epsilon 0.001f
 
-struct TFloat
+struct Coordinate
 {
 	union
 	{
@@ -22,7 +22,7 @@ struct TFloat
 };
 
 
-class Vector : public TFloat
+class Vector : public Coordinate
 {
 public:
 	float LengthSquared();

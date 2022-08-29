@@ -8,7 +8,7 @@ Node::Node(Node* parent, Vector pos, Vector size)
 {
     box.set(pos, size);
     depth = 0;
-    parent = nullptr;
+    this->parent = nullptr;
     if (parent != nullptr)
     {
         this->parent = parent;

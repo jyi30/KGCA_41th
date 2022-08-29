@@ -16,7 +16,7 @@ void Octree::createTree(Vector pos, Vector size)
 
 void Octree::buildTree(Node* node)
 {
-    if (node->depth >= 3)
+    if (node->depth >= 2)
     {
         return;
     }
@@ -63,7 +63,7 @@ void Octree::buildTree(Node* node)
 void Octree::addStaticObject(Object* obj)
 {
     Node* findNodeResult = findNode(rootNode, obj);
-    if (findNode != nullptr)
+    if (findNodeResult != nullptr)
     {
         findNodeResult->staticObject.push_back(obj);
     }
@@ -72,7 +72,7 @@ void Octree::addStaticObject(Object* obj)
 void Octree::addDynamicObject(Object* obj)
 {
     Node* findNodeResult = findNode(rootNode, obj);
-    if (findNode != nullptr)
+    if (findNodeResult != nullptr)
     {
         findNodeResult->dynamicObject.push_back(obj);
     }

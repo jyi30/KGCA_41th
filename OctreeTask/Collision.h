@@ -14,7 +14,7 @@ struct Sphere
 {
 	Vector center;
 	float radius;
-	Sphere();
+	Sphere() {};
 	Sphere(Vector vec, float rad)
 	{
 		center = vec;
@@ -41,7 +41,7 @@ struct Box
 		return false;
 	}
 
-	Box();
+	Box() {};
 	Box(Vector pos, Vector size)
 	{
 		set(pos, size);

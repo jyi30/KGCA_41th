@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <map>
 #include "Collision.h"
 #include "Object.h"
 
