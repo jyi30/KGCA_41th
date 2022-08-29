@@ -2,19 +2,20 @@
 #include "Octree.h"
 #include "PlayableObj.h"
 #include "DeployObj.h"
+#include <iomanip>
 class Launcher
 {
 public:
     PlayableObj player;
     Octree* tree = new Octree();
-    std::map<int, Object*> m_npcList;
-    std::map<int, Object*> m_AllObjectList;
-    std::vector<Object*>   m_DrawList;
+    std::map<int, Object*> nonPlayableList;
+    std::map<int, Object*> allObjectList;
+    std::vector<Object*>   printList;
 public:
-    bool    Init();     // 초기화	
-    bool    Frame(float fDeltaTime, float fGameTime);    // 실시간 계산
-    bool    Render();   // 화면에 드로우
-    bool    Release();  // 소멸하자
-    bool	Run();      // 실행하자
+    bool init();     // 초기화	
+    bool frame(float deltaTime, float gameTime);    // 계산
+    bool render();   // 출력
+    bool release();  // 소멸
+    bool run();      // 실행
 };
 

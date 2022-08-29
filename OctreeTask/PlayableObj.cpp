@@ -17,7 +17,7 @@ void PlayableObj::frame(float deltaTime, float gameTime)
     pos = pos + velocity;
 
     if (
-        fabs(velocity.Length()) > Epsilon)
+        fabs(velocity.length()) > Epsilon)
     {
         friction -= deltaTime;
         if (0 >= friction)
@@ -73,6 +73,6 @@ void PlayableObj::frame(float deltaTime, float gameTime)
         friction = 1.0f;
         direction.z *= -1.0f;
     }
-    direction.Normalized();
+    direction.normalized();
     setPosition(pos, size);
 }

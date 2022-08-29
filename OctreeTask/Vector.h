@@ -25,11 +25,11 @@ struct Coordinate
 class Vector : public Coordinate
 {
 public:
-	float LengthSquared();
-	float Length();
-	void Normalized();
-	Vector Identity();
-	float Angle(Vector& v);
+	float lengthRect();
+	float length();
+	void normalized();
+	Vector identity();
+	float angle(Vector& v);                   
 public:
 	Vector operator + (Vector& v);
 	Vector operator - (Vector& v);

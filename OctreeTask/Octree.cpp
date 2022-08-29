@@ -112,11 +112,11 @@ bool Octree::nodeInObject(Node* node, Object* obj)
     return Collision::BoxInCollision(node->box, obj->box);
 }
 
-bool Octree::objectCollision(Object* Dest, Object* Src)
+bool Octree::objectCollision(Object* dest, Object* src)
 {
-    if (Collision::SphereCollision(Dest->sphere, Src->sphere))
+    if (Collision::SphereCollision(dest->sphere, src->sphere))
     {
-        if (Collision::BoxCollision(Dest->box, Src->box))
+        if (Collision::BoxCollision(dest->box, src->box))
         {
             return true;
         }
@@ -124,16 +124,16 @@ bool Octree::objectCollision(Object* Dest, Object* Src)
     return false;
 }
 
-bool Octree::nodeCollision(Node* node, Object* pSrc)
+bool Octree::nodeCollision(Node* node, Object* obj)
 {
-    if (Collision::BoxCollision(node->box, pSrc->box))
+    if (Collision::BoxCollision(node->box, obj->box))
     {
         return true;
     }
     return false;
 }
 
-void Octree::GetCollisitionObject(Node* node, Object* pSrcObject, std::vector<Object*>& list)
+void Octree::getCollisionObject(Node* node, Object* object, std::vector<Object*>& list)
 {
     if (node == nullptr)
     {
@@ -142,14 +142,14 @@ void Octree::GetCollisitionObject(Node* node, Object* pSrcObject, std::vector<Ob
 
     for (int i = 0; i < node->staticObject.size(); i++)
     {
-        if (objectCollision(node->staticObject[i], pSrcObject))
+        if (objectCollision(node->staticObject[i], object))
         {
             list.push_back(node->staticObject[i]);
         }
     }
     for (int i = 0; i < node->dynamicObject.size(); i++)
     {
-        if (objectCollision(node->dynamicObject[i], pSrcObject))
+        if (objectCollision(node->dynamicObject[i], object))
         {
             list.push_back(node->dynamicObject[i]);
         }
@@ -158,22 +158,22 @@ void Octree::GetCollisitionObject(Node* node, Object* pSrcObject, std::vector<Ob
     {
         for (int i = 0; i < node->child.size(); i++)
         {
-            if (nodeCollision(node->child[i], pSrcObject))
+            if (nodeCollision(node->child[i], object))
             {
-                GetCollisitionObject(node->child[i], pSrcObject, list);
+                getCollisionObject(node->child[i], object, list);
             }
         }
     }
 }
 
-std::vector<Object*> Octree::Collisionlist(Object* obj)
+std::vector<Object*> Octree::collisionList(Object* obj)
 {
     std::vector<Object*> list;
-    GetCollisitionObject(rootNode, obj, list);
+    getCollisionObject(rootNode, obj, list);
     return list;
 };
 
-void Octree::DynamicReset(Node* node)
+void Octree::dynamicReset(Node* node)
 {
     if (node == nullptr)
     {
@@ -182,11 +182,11 @@ void Octree::DynamicReset(Node* node)
     node->dynamicObject.clear();
     for (int i = 0; i < node->child.size(); i++)
     {
-        DynamicReset(node->child[i]);
+        dynamicReset(node->child[i]);
     }
 }
 
-void Octree::DynamicObjectReset()
+void Octree::dynamicObjectReset()
 {
-    DynamicReset(rootNode);
+    dynamicReset(rootNode);
 }

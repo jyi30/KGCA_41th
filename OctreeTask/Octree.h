@@ -13,12 +13,12 @@ public:
 	void addStaticObject(Object* sObj);
 	void addDynamicObject(Object* dObj);
 	Node* findNode(Node* node, Object* obj);
-	bool nodeInObject(Node* pNode, Object* pObj);
-	bool objectCollision(Object* pDest, Object* pSrc);
-	bool nodeCollision(Node* pNode, Object* pSrc);
-	void GetCollisitionObject(Node* pNode, Object* pSrcObject, std::vector<Object*>& list);
-	std::vector<Object*> Collisionlist(Object* pObj);
-	void DynamicReset(Node* pNode);
-	void DynamicObjectReset();
+	bool nodeInObject(Node* node, Object* obj);
+	bool objectCollision(Object* dest, Object* src);
+	bool nodeCollision(Node* node, Object* src);
+	void getCollisionObject(Node* node, Object* object, std::vector<Object*>& list);
+	std::vector<Object*> collisionList(Object* obj);
+	void dynamicReset(Node* Node);
+	void dynamicObjectReset();
 };
 

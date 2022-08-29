@@ -14,7 +14,7 @@ void Object::init()
     direction.x = cos(rand());
     direction.y = sin(rand());
     direction.z = 1.0f - cos(rand());
-    direction.Normalized();
+    direction.normalized();
     friction = 0.0f;
     mass = 100.0f;
     speed = 10.0f;
@@ -39,7 +39,7 @@ void Object::setSphere(Vector center, float radius)
 void Object::setSphere(Box box)
 {
     sphere.center = box.center;
-    sphere.radius = (box.size * 0.5f).Length();
+    sphere.radius = (box.size * 0.5f).length();
 }
 
 void Object::setPosition(Vector pos, Vector size)

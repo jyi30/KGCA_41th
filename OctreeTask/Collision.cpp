@@ -60,7 +60,7 @@ bool Collision::SphereCollision(Sphere& Sphere1, Sphere& Sphere2)
 {
     float fSumRadius = Sphere1.radius + Sphere2.radius;
     Vector vDir = Sphere1.center - Sphere2.center;
-    float fDistance = vDir.Length();
+    float fDistance = vDir.length();
     if (fDistance <= fSumRadius)
     {
         return true;
