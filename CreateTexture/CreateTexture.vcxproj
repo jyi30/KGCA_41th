@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0d84fcb9-4c43-4532-92ef-68a9f0f7f4a7}</ProjectGuid>
-    <RootNamespace>CreateWindowEx</RootNamespace>
+    <ProjectGuid>{c544a8bf-708d-4acf-ae2f-d2e7b6160353}</ProjectGuid>
+    <RootNamespace>CreateTexture</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>../../output/debug/</OutDir>
-    <IntDir>../../output/debug/CreateWindowEx/</IntDir>
+    <IntDir>../../output/debug/CreateTexture/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -118,10 +118,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../../include/dxtk</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -141,20 +143,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CreateWindowEx.h" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="TDevice.h" />
+    <ClInclude Include="TStd.h" />
+    <ClInclude Include="TWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CreateWindowEx.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="CreateWindowEx.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="CreateWindowEx.ico" />
-    <Image Include="small.ico" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="TDevice.cpp" />
+    <ClCompile Include="TWindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
