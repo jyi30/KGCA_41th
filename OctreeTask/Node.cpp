@@ -1,9 +1,5 @@
 #include "Node.h"
 
-Node::Node()
-{
-
-}
 Node::Node(Node* parent, Vector pos, Vector size)
 {
     box.set(pos, size);

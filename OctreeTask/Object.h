@@ -18,7 +18,7 @@ public:
 
 public:
 	virtual void init();
-	virtual void frame(float deltaTime, float gameTime);
+	virtual void frame(float deltaTime) {};
 	void addForce(Vector v);
 	void setSphere(Vector center, float radius);
 	void setSphere(Box box);

@@ -1,6 +1,6 @@
 #include "Collision.h"
 
-CollisionResult Collision::BoxCollision(Box& box1, Box& box2)
+bool Collision::boxCollision(Box& box1, Box& box2)
 {
     float minX;
     float maxX;
@@ -15,15 +15,12 @@ CollisionResult Collision::BoxCollision(Box& box1, Box& box2)
     minZ = box1.min.z < box2.min.z ? box1.min.z : box2.min.z;
     maxZ = box1.max.z > box2.max.z ? box1.max.z : box2.max.z;
 
-    //  가로 판정
     if ((box1.size.x + box2.size.x) >= (maxX - minX))
     {
-        //  세로 판정
         if ((box1.size.y + box2.size.y) >= (maxY - minY))
         {
             if ((box1.size.z + box2.size.z) >= (maxZ - minZ))
             {
-                // 교차한다. 교집합
                 Vector min, max;
                 Box intersection;
                 min.x = box1.min.x > box2.min.x ? box1.min.x : box2.min.x;
@@ -37,15 +34,16 @@ CollisionResult Collision::BoxCollision(Box& box1, Box& box2)
                 intersection.set(min, max - min);
                 if (intersection == box1 || intersection == box2)
                 {
-                    return CollisionResult::RECT_IN;
+                    return true;
                 }
-                return CollisionResult::RECT_OVERLAP;
+                return true;
             }
         }
     }
-    return CollisionResult::RECT_OUT;
+    return false;
 }
-bool Collision::BoxInCollision(Box& box1, Box& box2)
+
+bool Collision::boxInCollision(Box& box1, Box& box2)
 {
     if (box1.min <= box2.min)
     {
@@ -56,14 +54,16 @@ bool Collision::BoxInCollision(Box& box1, Box& box2)
     }
     return false;
 }
-bool Collision::SphereCollision(Sphere& Sphere1, Sphere& Sphere2)
+
+bool Collision::sphereCollision(Sphere& sphere1, Sphere& sphere2)
 {
-    float fSumRadius = Sphere1.radius + Sphere2.radius;
-    Vector vDir = Sphere1.center - Sphere2.center;
-    float fDistance = vDir.length();
-    if (fDistance <= fSumRadius)
+    float sumRadius = sphere1.radius + sphere2.radius;
+    Vector dir = sphere1.center - sphere2.center;
+    float distance = dir.length();
+    if (distance <= sumRadius)
     {
         return true;
     }
+
     return false;
 }

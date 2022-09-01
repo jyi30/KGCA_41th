@@ -3,6 +3,6 @@
 
 class DeployObj : public Object
 {
-	void frame(float deltaTime, float gameTime);
+	void frame(float deltaTime);
 };
 

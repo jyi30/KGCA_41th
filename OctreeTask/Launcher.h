@@ -3,6 +3,7 @@
 #include "PlayableObj.h"
 #include "DeployObj.h"
 #include <iomanip>
+#include <time.h>
 class Launcher
 {
 public:
@@ -12,10 +13,10 @@ public:
     std::map<int, Object*> allObjectList;
     std::vector<Object*>   printList;
 public:
-    bool init();     // 초기화	
-    bool frame(float deltaTime, float gameTime);    // 계산
-    bool render();   // 출력
-    bool release();  // 소멸
-    bool run();      // 실행
+    bool init(); // 초기화	
+    bool frame(float deltaTime); // 동작
+    bool render(); // 출력
+    bool release(); // 해제
+    bool run(); // 시작
 };
 

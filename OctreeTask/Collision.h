@@ -3,22 +3,15 @@
 #include <queue>
 #include "Vector.h"
 
-enum CollisionResult
-{
-	RECT_OUT = 0,
-	RECT_IN,
-	RECT_OVERLAP,
-};
-
 struct Sphere
 {
 	Vector center;
 	float radius;
 	Sphere() {};
-	Sphere(Vector vec, float rad)
+	Sphere(Vector vector, float radius)
 	{
-		center = vec;
-		radius = rad;
+		center = vector;
+		radius = radius;
 	}
 };
 
@@ -29,11 +22,11 @@ struct Box
 	Vector size;
 	Vector center;
 
-	bool operator == (Box& nBox)
+	bool operator == (Box& box)
 	{
-		if (min == nBox.min)
+		if (min == box.min)
 		{
-			if (size == nBox.size)
+			if (size == box.size)
 			{
 				return true;
 			}
@@ -59,8 +52,8 @@ struct Box
 class Collision
 {
 public:
-	static CollisionResult BoxCollision(Box& box1, Box& box2);
-	static bool BoxInCollision(Box& box1, Box& box2);
-	static bool SphereCollision(Sphere& sphere1, Sphere& sphere2);
+	static bool boxCollision(Box& box1, Box& box2);
+	static bool boxInCollision(Box& box1, Box& box2);
+	static bool sphereCollision(Sphere& sphere1, Sphere& sphere2);
 };
 

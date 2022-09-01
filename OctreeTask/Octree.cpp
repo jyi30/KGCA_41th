@@ -109,14 +109,14 @@ Node* Octree::findNode(Node* node, Object* obj)
 
 bool Octree::nodeInObject(Node* node, Object* obj)
 {
-    return Collision::BoxInCollision(node->box, obj->box);
+    return Collision::boxInCollision(node->box, obj->box);
 }
 
 bool Octree::objectCollision(Object* dest, Object* src)
 {
-    if (Collision::SphereCollision(dest->sphere, src->sphere))
+    if (Collision::sphereCollision(dest->sphere, src->sphere))
     {
-        if (Collision::BoxCollision(dest->box, src->box))
+        if (Collision::boxCollision(dest->box, src->box))
         {
             return true;
         }
@@ -126,7 +126,7 @@ bool Octree::objectCollision(Object* dest, Object* src)
 
 bool Octree::nodeCollision(Node* node, Object* obj)
 {
-    if (Collision::BoxCollision(node->box, obj->box))
+    if (Collision::boxCollision(node->box, obj->box))
     {
         return true;
     }

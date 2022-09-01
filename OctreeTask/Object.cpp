@@ -2,27 +2,23 @@
 
 void Object::init()
 {
+    //srand((unsigned int)time(NULL));
+
     Vector pos, size;
-    pos.x = 20 + (rand() % 80);
-    pos.y = 20 + (rand() % 80);
-    pos.z = 20 + (rand() % 80);
-    size.x = 5.0f + (rand() % 5);
-    size.y = 5.0f + (rand() % 5);
-    size.z = 5.0f + (rand() % 5);
+    pos.x = 10 + (rand() % 70);
+    pos.y = 10 + (rand() % 70);
+    pos.z = 10 + (rand() % 70);
+    size.x = 5.0f + (rand() % 20);
+    size.y = 5.0f + (rand() % 20);
+    size.z = 5.0f + (rand() % 20);
     box.set(pos, size);
     setSphere(box);
     direction.x = cos(rand());
     direction.y = sin(rand());
     direction.z = 1.0f - cos(rand());
-    direction.normalized();
-    friction = 0.0f;
-    mass = 100.0f;
-    speed = 10.0f;
-}
-
-void Object::frame(float deltaTime, float gameTime)
-{
-
+    speed = 15.0f;
+    mass = 70.0f;
+    friction = 1.0f;
 }
 
 void Object::addForce(Vector v)

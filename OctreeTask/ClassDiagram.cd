@@ -1,88 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Collision" Collapsed="true">
-    <Position X="5.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
-      <FileName>Collision.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DeployObj" Collapsed="true">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+  <Class Name="DeployObj">
+    <Position X="2.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>DeployObj.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Node" Collapsed="true">
-    <Position X="5.25" Y="1.5" Width="1.5" />
+  <Class Name="Node">
+    <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAACACiAAAAAAAAAAAAAAIAEAABA=</HashCode>
       <FileName>Node.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Object" Collapsed="true">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+  <Class Name="Object">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIgAAQAAAAAAJAAgAABAAgACAQAEAQYAAAQAAQAAAAA=</HashCode>
       <FileName>Object.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Octree" Collapsed="true">
-    <Position X="7" Y="1.5" Width="1.5" />
+  <Class Name="Octree">
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEABARIAAAAAAAABIQABAAAQAAAEAACAEEAA=</HashCode>
       <FileName>Octree.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PlayableObj" Collapsed="true">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+  <Class Name="PlayableObj">
+    <Position X="2.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>PlayableObj.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Vector" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+  <Class Name="Vector">
+    <Position X="4.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAAAAAEAAAQAAAAAAAAAAAEAgIABAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAQAAAAAAAAAAAEAgAAAAAAA=</HashCode>
       <FileName>Vector.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Launcher" Collapsed="true">
-    <Position X="7" Y="0.5" Width="1.5" />
+  <Class Name="Launcher">
+    <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAgAAABAAAAAAgAAACAAAAAAEAAIBAAAAAQAQAAA=</HashCode>
       <FileName>Launcher.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Struct Name="Sphere" Collapsed="true">
-    <Position X="7" Y="2.75" Width="1.5" />
+  <Class Name="Collision">
+    <Position X="6.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQg=</HashCode>
       <FileName>Collision.h</FileName>
     </TypeIdentifier>
-  </Struct>
-  <Struct Name="Box" Collapsed="true">
-    <Position X="5.25" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAEAAAAAAQAAAAAIQAAQAAAAIAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Collision.h</FileName>
-    </TypeIdentifier>
-  </Struct>
-  <Struct Name="Coordinate" Collapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+  </Class>
+  <Struct Name="Coordinate">
+    <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Vector.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Enum Name="CollisionResult" Collapsed="true">
-    <Position X="5.25" Y="4" Width="1.5" />
+  <Struct Name="Sphere">
+    <Position X="10" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collision.h</FileName>
     </TypeIdentifier>
-  </Enum>
+  </Struct>
+  <Struct Name="Box">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAEAAAAAAQAAAAAIQAAQAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Collision.h</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Font Name="맑은 고딕" Size="9" />
 </ClassDiagram>

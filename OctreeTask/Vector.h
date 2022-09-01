@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cstdlib>
 #include <math.h>
 
 #define PI 3.141592f
@@ -25,24 +26,21 @@ struct Coordinate
 class Vector : public Coordinate
 {
 public:
-	float lengthRect();
-	float length();
-	void normalized();
-	Vector identity();
-	float angle(Vector& v);                   
+	float length();                
 public:
 	Vector operator + (Vector& v);
 	Vector operator - (Vector& v);
 	Vector operator * (float scala);
 	Vector operator / (float scala);
-	Vector operator *= (float scala);
 	Vector operator += (Vector& v);
 	Vector operator -= (Vector& v);
+	Vector operator *= (float scala);
 	bool operator == (Vector& v);
 	bool operator <= (Vector& v);
 	bool operator >= (Vector& v);
 	Vector();
-	Vector(float x, float y, float z);
 	Vector(const Vector& v);
+	Vector(float x, float y, float z);
+
 };
 

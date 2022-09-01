@@ -1,18 +1,18 @@
 #include "PlayableObj.h"
 
-void PlayableObj::frame(float deltaTime, float gameTime)
+void PlayableObj::frame(float deltaTime)
 {
     speed = 30.0f;
     mass = 10.0f;
     Vector pos = box.min;
     Vector size = box.size;
 
-    Vector vKeyForce = direction * speed * deltaTime;
-    addForce(vKeyForce);
+    Vector vForce = direction * speed * deltaTime;
+    addForce(vForce);
 
     acceleration = force / mass;
-    Vector linearAcc = acceleration;
-    velocity += linearAcc;
+    Vector linear = acceleration;
+    velocity += linear;
 
     pos = pos + velocity;
 
@@ -40,14 +40,14 @@ void PlayableObj::frame(float deltaTime, float gameTime)
         pos.x = 0.0f;
         force = Vector(0, 0, 0);
         velocity = Vector(0, 0, 0);
-        direction.x = 1.0f;
+        direction.x *= -1.0f;
         friction = 1.0f;
     }
     if (pos.y > 100.0f)
     {
         pos.y = 100.0f;
         force = Vector(0, 0, 0);
-        direction.y = -1.0f;
+        direction.y *= -1.0f;
         friction = 1.0f;
     }
     if (pos.y < 0.0f)
@@ -55,24 +55,24 @@ void PlayableObj::frame(float deltaTime, float gameTime)
         pos.y = 0.0f;
         force = Vector(0, 0, 0);
         velocity = Vector(0, 0, 0);
-        direction.y = 1.0f;
+        direction.y *= -1.0f;
         friction = 1.0f;
     }
     if (pos.z > 100.0f)
     {
         pos.z = 100.0f;
         force = Vector(0, 0, 0);
-        friction = 1.0f;
         direction.z *= -1.0f;
+        friction = 1.0f;
     }
     if (pos.z < 0.0f)
     {
         pos.z = 0.0f;
         force = Vector(0, 0, 0);
         velocity = Vector(0, 0, 0);
-        friction = 1.0f;
         direction.z *= -1.0f;
+        friction = 1.0f;
+        
     }
-    direction.normalized();
     setPosition(pos, size);
 }

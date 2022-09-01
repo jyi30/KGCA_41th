@@ -14,7 +14,7 @@ public:
 	std::vector<Object*> dynamicObject;
 	Node* parent;
 public:
-	Node();
+	Node() {};
 	Node(Node* parent, Vector pos, Vector size);
 	~Node();
 };

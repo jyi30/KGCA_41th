@@ -1,6 +1,6 @@
 #include "DeployObj.h"
 
-void DeployObj::frame(float deltaTime, float gameTime)
+void DeployObj::frame(float deltaTime)
 {
 	Vector pos = box.min;
 	Vector size = box.size;
@@ -9,11 +9,11 @@ void DeployObj::frame(float deltaTime, float gameTime)
     pos = pos + velocity;
     friction = (deltaTime * speed * 0.1f);
     speed -= friction;
+
     if (0 >= speed)
     {
         speed = rand() % 10;
     }
-
     if (pos.x > 100.0f)
     {
         pos.x = 100.0f;
