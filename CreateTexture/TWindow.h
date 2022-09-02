@@ -12,7 +12,7 @@ public:
 	UINT m_iClientWidth;
 	UINT m_iClientHeight;
 public:
-	bool SetWindow(HINSTANCE hInst, const WCHAR* szTitle, UINT iWidth = 1024, UINT iHeight = 768);
+	bool setWindow(HINSTANCE hInst, const WCHAR* szTitle, UINT iWidth = 1024, UINT iHeight = 768);
 	ATOM MyRegisterClass();
 	BOOL InitInstance(const WCHAR* szTitle, UINT iWidth, UINT iHeight);
 	bool  Run();

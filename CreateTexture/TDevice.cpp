@@ -107,7 +107,7 @@ HRESULT TDevice::CreateSwapChain()
 	sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT; 
 	//BufferUsage : 버퍼의 용도를 서술하는 구조체, 지금은 후면 버퍼를 렌더 대상으로 사용할 것
-	sd.OutputWindow = g_hWnd; //렌더링 결과를 표시할 창의 핸들
+	sd.OutputWindow = g_hWnd; //렌더링 결과를 표시할 창의 핸들 지정
 	sd.Windowed = true; //창모드를 원하면 true, 전체화면은 false
 	
 	//Numerator : 유리수의 맨 위를 나타내는 부호 없는 정수 값

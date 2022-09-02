@@ -81,7 +81,7 @@ ATOM TWindow::MyRegisterClass()
 	return RegisterClassEx(&wcex);
 }
 
-bool TWindow::SetWindow(HINSTANCE hInstance, const WCHAR* szTitle, UINT iWidth, UINT iHeight)
+bool TWindow::setWindow(HINSTANCE hInstance, const WCHAR* szTitle, UINT iWidth, UINT iHeight)
 {
 	m_hInstance = hInstance;
 	WORD ret = MyRegisterClass();

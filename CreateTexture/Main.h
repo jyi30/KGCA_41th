@@ -18,6 +18,13 @@
 
 class Main : public TDevice
 {
-	//여기까지
+	ID3D11Resource* m_Texture = nullptr;
+	ID3D11ShaderResourceView* m_pTextureSRV = nullptr;
+
+public:
+	bool Init();
+	bool Frame();
+	bool Render();
+	bool Release();
 };
 
