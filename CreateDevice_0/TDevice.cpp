@@ -67,6 +67,12 @@ HRESULT TDevice::CreateDevice()
 {
 	//1. µð¹ÙÀÌ½º »ý¼º
 	HRESULT hr;
+
+	UINT createDeviceFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
+#ifdef _DEBUG
+	createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
+#endif
+
 	D3D_FEATURE_LEVEL pFeatureLevel;
 	UINT Flags = 0;
 	D3D_FEATURE_LEVEL pFeatureLevels[] =
@@ -74,7 +80,7 @@ HRESULT TDevice::CreateDevice()
 		D3D_FEATURE_LEVEL_11_0,
 	};
 	UINT FeatureLevels = 1;
-	hr = D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, pFeatureLevels, 1, D3D11_SDK_VERSION, 
+	hr = D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, NULL, createDeviceFlags, pFeatureLevels, 1, D3D11_SDK_VERSION, 
 		&m_pd3dDevice, 
 		&pFeatureLevel, 
 		&m_pImmediateContext
@@ -120,7 +126,7 @@ HRESULT TDevice::CreateRenderTargetView()
 	//4. ·»´õÅ¸°Ùºä »ý¼º
 	HRESULT hr;
 	ID3D11Texture2D* pBackBuffer = nullptr;
-	m_pSwapChain->GetBuffer(0, __uuidof(ID3D10Texture2D), (void**)&pBackBuffer);
+	m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&pBackBuffer);
 	hr = m_pd3dDevice->CreateRenderTargetView(pBackBuffer, NULL, &m_pRTV);
 	pBackBuffer->Release();
 

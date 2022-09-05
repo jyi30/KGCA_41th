@@ -65,7 +65,7 @@ ATOM TWindow::MyRegisterClass()
 	wcex.cbSize = sizeof(WNDCLASSEX); //구조체의 크기를 결정
 	wcex.style = CS_HREDRAW | CS_VREDRAW; //윈도우 스타일(보통 비트연산자를 사용하여 결합
 	wcex.hInstance = m_hInstance; //인스턴스 핸들을 지정
-	wcex.hbrBackground = CreateSolidBrush(RGB(103, 130, 130)); //윈도우 배경화면을 지정
+	wcex.hbrBackground = CreateSolidBrush(RGB(255, 0, 0)); //윈도우 배경화면을 지정
 	wcex.lpszClassName = L"KGCA윈도우"; // 클래스 이름 지정
 	wcex.lpfnWndProc = WndProc; //윈도우 메세지 콜백함수를 지정
 	wcex.hCursor = LoadCursor(nullptr, IDC_WAIT); // 윈도우에 사용할 커서 지정
